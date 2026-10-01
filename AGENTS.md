@@ -35,3 +35,5 @@ so you understand how this was implemented originally.
 
 ## Styling
 We need to make sure styling is consistent across all the components.
+
+Make sure to always use tailwind for your styling.
