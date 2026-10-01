@@ -20,3 +20,18 @@ Consult these guides before working on related tasks:
 - [Adding or managing content](https://docs.astro.build/en/guides/content-collections/)
 - [Adding styles or using Tailwind](https://docs.astro.build/en/guides/styling/)
 - [Supporting multiple languages](https://docs.astro.build/en/guides/internationalization/)
+
+
+## About the project
+We are building a new website for hita. The current website can be viewed here: http://hita-ev.org/
+
+The initial goal of the project is to replicate the content of the original page, but with a new more modern feel.
+
+We should ultimately include all the content of the original page, but we can restructure the menus, pages
+and of course the styling.
+
+When you are instructed to build something, make sure you always check the existing equivalent on http://hita-ev.org/
+so you understand how this was implemented originally.
+
+## Styling
+We need to make sure styling is consistent across all the components.
