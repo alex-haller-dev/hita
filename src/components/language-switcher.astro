@@ -22,7 +22,7 @@ const current = Astro.url.pathname.startsWith("/en") ? "en" : "de";
                 title={lang.name}
                 aria-current={active ? "true" : undefined}
                 class:list={[
-                    "rounded-full px-3 py-1 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand",
+                    "rounded-full px-2.5 py-1 transition-colors sm:px-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand",
                     active
                         ? "bg-brand text-white shadow-sm"
                         : "text-gray-600 hover:text-brand",

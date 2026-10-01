@@ -1,3 +1,160 @@
-<div>
-    Footer
-</div>
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { translate } from "../translations/translations";
+
+const locale = Astro.currentLocale ?? "de";
+const t = (key: Parameters<typeof translate>[0]) => translate(key, locale);
+
+// Icon bodies are 24x24 stroke icons (Lucide / Tabler style).
+const socials = [
+    {
+        name: "Facebook",
+        href: "https://www.facebook.com/HITA-eV-Healthcare-Information-Technologies-for-Africa-eV-448468271870135/",
+        icon: '<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>',
+    },
+    {
+        name: "Instagram",
+        href: "https://www.instagram.com/hita_ev/",
+        icon: '<rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/>',
+    },
+    {
+        name: "LinkedIn",
+        href: "https://www.linkedin.com/in/hita-ev-b10a16145/",
+        icon: '<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>',
+    },
+    {
+        name: "X (Twitter)",
+        href: "https://twitter.com/HITA_eV",
+        icon: '<path d="M4 4l11.733 16h4.267l-11.733-16z"/><path d="M4 20l6.768-6.768m2.46-2.46L20 4"/>',
+    },
+    {
+        name: "YouTube",
+        href: "https://www.youtube.com/@HITAeV",
+        icon: '<path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/>',
+    },
+];
+
+const legalLinks = [
+    { label: t("footerImprint"), href: getRelativeLocaleUrl(locale, "impressum") },
+    { label: t("footerPrivacy"), href: getRelativeLocaleUrl(locale, "datenschutz") },
+];
+
+const year = new Date().getFullYear();
+
+const headingClass = "mb-4 text-xs font-bold tracking-widest text-white uppercase";
+const labelClass = "text-xs text-gray-400";
+const linkClass =
+    "rounded-sm transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand";
+---
+
+<footer class="border-t-4 border-brand bg-gray-900 text-sm text-gray-300">
+    <div class="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:grid-cols-2 sm:px-6 lg:grid-cols-4">
+        <div>
+            <img
+                src="/images/hita-logo-footer.png"
+                alt="HITA – Health Care IT for Africa e.V."
+                width="148"
+                height="132"
+                class="h-20 w-auto"
+            />
+            <p class="mt-4 leading-relaxed text-gray-400">
+                {t("footerTagline")}
+            </p>
+            <ul class="mt-6 flex flex-wrap gap-2" aria-label={t("footerSocialMedia")}>
+                {socials.map((social) => (
+                    <li>
+                        <a
+                            href={social.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={social.name}
+                            title={social.name}
+                            class="flex size-9 items-center justify-center rounded-full bg-white/10 text-gray-300 transition-colors hover:bg-brand hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="size-4"
+                                aria-hidden="true"
+                                set:html={social.icon}
+                            />
+                        </a>
+                    </li>
+                ))}
+            </ul>
+        </div>
+
+        <div>
+            <h2 class={headingClass}>{t("footerOffice")}</h2>
+            <address class="leading-relaxed not-italic">
+                Healthcare IT for Africa e.V. <span class="whitespace-nowrap">(HITA e.V.)</span><br />
+                c/o Marion Fellmann<br />
+                Josef-Schmitt-Str. 4<br />
+                D-97922 Lauda-Königshofen
+            </address>
+        </div>
+
+        <div>
+            <h2 class={headingClass}>{t("footerContact")}</h2>
+            <dl class="space-y-3">
+                <div>
+                    <dt class={labelClass}>{t("footerPhone")}</dt>
+                    <dd><a href="tel:+4915678952247" class={linkClass}>+49 15678 952247</a></dd>
+                </div>
+                <div>
+                    <dt class={labelClass}>{t("footerEmail")}</dt>
+                    <dd>
+                        <a href="mailto:geschaeftsstelle@hita-ev.org" class={`${linkClass} break-all`}>
+                            geschaeftsstelle@hita-ev.org
+                        </a>
+                    </dd>
+                </div>
+            </dl>
+        </div>
+
+        <div>
+            <h2 class={headingClass}>{t("footerDonationAccount")}</h2>
+            <dl class="space-y-3">
+                <div>
+                    <dt class={labelClass}>{t("footerAccountHolder")}</dt>
+                    <dd>HITA e.V.</dd>
+                </div>
+                <div>
+                    <dt class={labelClass}>{t("footerBank")}</dt>
+                    <dd>Deutsche Bank</dd>
+                </div>
+                <div>
+                    <dt class={labelClass}>IBAN</dt>
+                    <dd class="font-mono whitespace-nowrap text-white">DE86 6907 0024 0050 6006 00</dd>
+                </div>
+                <div>
+                    <dt class={labelClass}>BIC</dt>
+                    <dd class="font-mono text-white">DEUTDEDB690</dd>
+                </div>
+            </dl>
+        </div>
+    </div>
+
+    <div class="border-t border-white/10">
+        <div class="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-6 text-xs text-gray-400 sm:px-6 md:flex-row md:items-start md:justify-between">
+            <div class="space-y-1 md:max-w-3xl">
+                <p>© {year} Health Care IT for Africa e.V. (HITA e.V.) · {t("footerRightsReserved")}</p>
+                <p class="leading-relaxed">{t("footerRegistration")}</p>
+            </div>
+            <nav aria-label={t("footerLegal")}>
+                <ul class="flex gap-4">
+                    {legalLinks.map((link) => (
+                        <li>
+                            <a href={link.href} class={`${linkClass} text-gray-300`}>{link.label}</a>
+                        </li>
+                    ))}
+                </ul>
+            </nav>
+        </div>
+    </div>
+</footer>
