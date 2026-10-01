@@ -1,1 +1,35 @@
-<div>TEst</div>
+---
+const navItems = [
+    { label: "Projekte", href: "#" },
+    { label: "Unterstützen", href: "#" },
+];
+---
+
+<header class="sticky top-0 z-50 border-b border-gray-200 bg-white/90 backdrop-blur">
+    <div class="mx-auto flex h-20 max-w-6xl items-center justify-between px-4 sm:px-6">
+        <a href="/" class="flex items-center" aria-label="HITA e.V. – Startseite">
+            <img
+                src="/images/hita-logo.png"
+                alt="HITA – Health Care IT for Africa e.V."
+                width="316"
+                height="241"
+                class="h-14 w-auto"
+            />
+        </a>
+
+        <nav aria-label="Hauptnavigation">
+            <ul class="flex items-center gap-1 sm:gap-2">
+                {navItems.map((item) => (
+                    <li>
+                        <a
+                            href={item.href}
+                            class="relative rounded-md px-3 py-2 text-sm font-semibold tracking-wide text-gray-700 uppercase transition-colors after:absolute after:inset-x-3 after:bottom-1 after:h-0.5 after:origin-left after:scale-x-0 after:bg-brand after:transition-transform hover:text-brand hover:after:scale-x-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand sm:text-base"
+                        >
+                            {item.label}
+                        </a>
+                    </li>
+                ))}
+            </ul>
+        </nav>
+    </div>
+</header>

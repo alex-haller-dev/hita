@@ -1,1 +1,7 @@
 @import "tailwindcss";
+
+@theme {
+  --color-brand: #e2263d;
+  --color-brand-dark: #b81c30;
+  --font-sans: "Open Sans", ui-sans-serif, system-ui, sans-serif;
+}

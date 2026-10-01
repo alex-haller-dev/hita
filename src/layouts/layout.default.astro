@@ -1,18 +1,22 @@
 ---
 import Header from "../components/header.astro";
 import Footer from "../components/footer.astro";
+import "../styles/global.css";
 ---
 
-<html lang="en">
+<html lang="de">
     <head>
         <meta charset="utf-8" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
-        <title>Astro</title>
+        <title>HITA e.V. | Health Care Information Technologies for Africa e.V.</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
     </head>
-    <body>
+    <body class="bg-white font-sans text-gray-800 antialiased">
         <Header />
         <slot></slot>
         <Footer />
