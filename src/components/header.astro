@@ -1,9 +1,10 @@
 ---
 import LanguageSwitcher from "./language-switcher.astro";
+import {translate} from "../translations/translations.ts";
 
 const navItems = [
-    { label: "Projekte", href: "#" },
-    { label: "Unterstützen", href: "#" },
+    { label: translate('projects', Astro.currentLocale), href: "#" },
+    { label: translate('support', Astro.currentLocale), href: "#" },
 ];
 ---
 
