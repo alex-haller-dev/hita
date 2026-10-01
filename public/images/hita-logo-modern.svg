@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 196 108" role="img" aria-label="HITA – Health Care IT for Africa e.V.">
+  <g fill="#1f2937">
+    <rect x="0" y="28" width="10" height="48" rx="1.5"/>
+    <rect x="26" y="28" width="10" height="48" rx="1.5"/>
+    <rect x="0" y="47" width="36" height="10"/>
+    <rect x="48" y="28" width="10" height="48" rx="1.5"/>
+    <rect x="70" y="28" width="38" height="10" rx="1.5"/>
+    <rect x="84" y="28" width="10" height="48" rx="1.5"/>
+    <path d="M120 76V28a48 48 0 0 1 48 48h-10a38 38 0 0 0-28-36.66V76z"/>
+  </g>
+  <g fill="none" stroke="#e2263d" stroke-width="7" stroke-linecap="round">
+    <path d="M129.9 19.87A57 57 0 0 1 176.13 66.1"/>
+    <path d="M132.33 6.08A71 71 0 0 1 189.92 63.67"/>
+  </g>
+  <circle cx="138" cy="63.4" r="5" fill="#e2263d"/>
+  <text x="0" y="101" textLength="190" lengthAdjust="spacing" fill="#4b5563" font-family="'Open Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" font-weight="600">Health Care IT for Africa e.V.</text>
+</svg>
