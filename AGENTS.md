@@ -42,3 +42,6 @@ Make sure to always use tailwind for your styling.
 For astro files, use lower case and dashes to name the file.
 
 For ts files use lower case and `.` notation for multi name files.
+
+## Mobile support
+Make sure the website is optimised for both PC use and for mobile use.
