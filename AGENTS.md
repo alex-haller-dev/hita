@@ -45,3 +45,8 @@ For ts files use lower case and `.` notation for multi name files.
 
 ## Mobile support
 Make sure the website is optimised for both PC use and for mobile use.
+
+## Translations
+When you implement a new page make sure you always add german and english translations. If the layout of the page
+changes because of the language, you can use the en/ subfolder to implement a new component. If just the page itself
+changes then you can add the translations to the translation.ts file.
