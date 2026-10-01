@@ -1,0 +1,35 @@
+---
+const languages = [
+    { code: "de", label: "DE", name: "Deutsch", href: "/" },
+    { code: "en", label: "EN", name: "English", href: "/en/" },
+];
+
+const current = Astro.url.pathname.startsWith("/en") ? "en" : "de";
+---
+
+<div
+    role="group"
+    aria-label="Sprache wählen / Select language"
+    class="inline-flex items-center rounded-full border border-gray-200 bg-gray-50 p-0.5 text-xs font-semibold tracking-wide"
+>
+    {languages.map((lang) => {
+        const active = lang.code === current;
+        return (
+            <a
+                href={lang.href}
+                hreflang={lang.code}
+                lang={lang.code}
+                title={lang.name}
+                aria-current={active ? "true" : undefined}
+                class:list={[
+                    "rounded-full px-3 py-1 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand",
+                    active
+                        ? "bg-brand text-white shadow-sm"
+                        : "text-gray-600 hover:text-brand",
+                ]}
+            >
+                {lang.label}
+            </a>
+        );
+    })}
+</div>
