@@ -37,3 +37,8 @@ so you understand how this was implemented originally.
 We need to make sure styling is consistent across all the components.
 
 Make sure to always use tailwind for your styling.
+
+## File naming
+For astro files, use lower case and dashes to name the file.
+
+For ts files use lower case and `.` notation for multi name files.
