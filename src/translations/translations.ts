@@ -7,7 +7,6 @@ export const translationsEn: Translation = { projects: 'projects', support: 'sup
 export const translationsDe: Translation = { projects: 'Projekte', support: 'Unterstützen' }
 
 export function translate(key: keyof Translation, locale: string | undefined) {
-    console.log(locale)
     switch (locale) {
         case 'en':
             return translationsEn[key]
