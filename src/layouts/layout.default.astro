@@ -18,8 +18,11 @@ import "../styles/global.css";
     </head>
     <body class="flex min-h-screen flex-col bg-white font-sans text-gray-800 antialiased">
         <Header />
-        <main class="flex-1 m-5">
-            <slot></slot>
+        <main class="flex-1">
+            <slot name="hero" />
+            <div class="m-5">
+                <slot></slot>
+            </div>
         </main>
         <Footer />
     </body>

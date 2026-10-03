@@ -1,10 +1,12 @@
 ---
 
 import LayoutDefault from '../layouts/layout.default.astro'
+import Hero from '../components/hero.astro'
 import FaqSection from '../components/faq-section.astro'
 import {FAQ} from "../constants/FAQ.ts";
 ---
 
 <LayoutDefault>
+	<Hero slot="hero" />
 	<FaqSection FAQItems={FAQ.de} />
 </LayoutDefault>
