@@ -1,0 +1,59 @@
+---
+interface Props {
+    question: string;
+    answer: string;
+    open?: boolean;
+}
+
+const { question, answer, open = false } = Astro.props
+
+const id = `faq-${crypto.randomUUID()}`
+---
+
+<div data-faq data-open={open ? "" : undefined} class="group border-b border-gray-200">
+    <h3>
+        <button
+            type="button"
+            id={`${id}-question`}
+            aria-expanded={open ? "true" : "false"}
+            aria-controls={`${id}-answer`}
+            class="flex w-full cursor-pointer items-center justify-between gap-4 rounded-md py-5 text-left text-base font-semibold text-gray-800 transition-colors hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand sm:text-lg"
+        >
+            <span>{question}</span>
+            <span
+                aria-hidden="true"
+                class="relative flex size-8 shrink-0 items-center justify-center rounded-full bg-gray-100 text-gray-600 transition-colors duration-300 group-hover:bg-brand/10 group-hover:text-brand group-data-open:bg-brand group-data-open:text-white"
+            >
+                <span class="absolute h-0.5 w-3.5 rounded-full bg-current"></span>
+                <span class="absolute h-3.5 w-0.5 rounded-full bg-current transition-transform duration-300 group-data-open:rotate-90 group-data-open:scale-y-0 motion-reduce:transition-none"></span>
+            </span>
+        </button>
+    </h3>
+
+    <div
+        id={`${id}-answer`}
+        role="region"
+        aria-labelledby={`${id}-question`}
+        inert={!open}
+        class="grid grid-rows-[0fr] opacity-0 transition-[grid-template-rows,opacity] duration-300 ease-out group-data-open:grid-rows-[1fr] group-data-open:opacity-100 motion-reduce:transition-none"
+    >
+        <div class="overflow-hidden">
+            <p class="pr-12 pb-5 leading-relaxed text-gray-600">{answer}</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll<HTMLElement>("[data-faq]").forEach((item) => {
+        const button = item.querySelector("button")
+        const answer = item.querySelector<HTMLElement>("[role=region]")
+        if (!button || !answer) return
+
+        button.addEventListener("click", () => {
+            const open = !item.hasAttribute("data-open")
+            item.toggleAttribute("data-open", open)
+            button.setAttribute("aria-expanded", String(open))
+            answer.inert = !open
+        })
+    })
+</script>

@@ -1,8 +1,10 @@
 ---
 
 import LayoutDefault from '../../layouts/layout.default.astro'
+import FaqSection from '../../components/faq-section.astro'
+import {FAQ} from "../../constants/FAQ.ts";
 ---
 
 <LayoutDefault>
-    Test
+    <FaqSection FAQItems={FAQ.en} />
 </LayoutDefault>

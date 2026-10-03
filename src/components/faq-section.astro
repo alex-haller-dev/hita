@@ -1,0 +1,15 @@
+---
+import {type FAQ, type FAQItem} from "../constants/FAQ.ts";
+import Faq from "./faq.astro";
+import Heading from "./heading.astro";
+
+interface Props {
+    FAQItems: FAQItem[]
+}
+
+const { FAQItems } = Astro.props
+---
+<div>
+    <Heading text="FAQ" />
+    { FAQItems.map(({ question, answer }) => <Faq question={question} answer={answer} />) }
+</div>
