@@ -1,18 +1,17 @@
 ---
 import LanguageSwitcher from "./language-switcher.astro";
 import {translate} from "../translations/translations.ts";
+import {resolvePath} from "../utils/path.ts";
 
 const navItems = [
-    { label: translate('projects', Astro.currentLocale), href: "projects" },
+    { label: translate('projects', Astro.currentLocale), href: resolvePath('/projects', Astro.currentLocale) },
     { label: translate('support', Astro.currentLocale), href: "#" },
 ];
-
-const homePath = Astro.currentLocale === 'de' ? '/' : `/${Astro.currentLocale}/`
 ---
 
 <header class="sticky top-0 z-50 border-b border-gray-200 bg-white/90 backdrop-blur">
     <div class="mx-auto flex h-20 max-w-6xl items-center justify-between px-4 sm:px-6">
-        <a href={homePath} class="flex shrink-0 items-center" aria-label="HITA e.V. – Startseite">
+        <a href={resolvePath("/", Astro.currentLocale)} class="flex shrink-0 items-center" aria-label="HITA e.V. – Startseite">
             <img
                 src="/images/hita-logo-modern.svg"
                 alt="HITA – Health Care IT for Africa e.V."
