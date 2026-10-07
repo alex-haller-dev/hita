@@ -5,6 +5,9 @@ const languages = [
 ];
 
 const current = Astro.url.pathname.startsWith("/en") ? "en" : "de";
+
+// TODO: instead of routing to / and /en we should route to the current path and prefix it with en or remove then
+//  en prefix
 ---
 
 <div
