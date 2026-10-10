@@ -1,4 +1,5 @@
 type Translation = {
+    aboutUs: string
     projects: string
     support: string
     footerTagline: string
@@ -30,6 +31,7 @@ type Translation = {
 }
 
 export const translationsEn: Translation = {
+    aboutUs: 'about us',
     projects: 'projects',
     support: 'support',
     footerTagline: 'Health Care Information Technologies for Africa e.V.',
@@ -64,6 +66,7 @@ export const translationsEn: Translation = {
 }
 
 export const translationsDe: Translation = {
+    aboutUs: 'Über uns',
     projects: 'Projekte',
     support: 'Unterstützen',
     footerTagline: 'Health Care Information Technologies for Africa e.V.',
