@@ -1,6 +1,6 @@
 ---
-import { getRelativeLocaleUrl } from "astro:i18n";
 import { translate } from "../translations/translations";
+import { resolvePath } from "../utils/path.ts";
 
 const locale = Astro.currentLocale ?? "de";
 const t = (key: Parameters<typeof translate>[0]) => translate(key, locale);
@@ -35,8 +35,8 @@ const socials = [
 ];
 
 const legalLinks = [
-    { label: t("footerImprint"), href: getRelativeLocaleUrl(locale, "legal-notice") },
-    { label: t("footerPrivacy"), href: getRelativeLocaleUrl(locale, "privacy-policy") },
+    { label: t("footerImprint"), href: resolvePath("/legal-notice", Astro.currentLocale) },
+    { label: t("footerPrivacy"), href: resolvePath("/privacy-policy", Astro.currentLocale) },
 ];
 
 const year = new Date().getFullYear();
