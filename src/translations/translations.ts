@@ -3,6 +3,7 @@ type Translation = {
     projects: string
     support: string
     partner: string
+    news: string
     footerTagline: string
     footerSocialMedia: string
     footerOffice: string
@@ -36,6 +37,7 @@ export const translationsEn: Translation = {
     projects: 'projects',
     support: 'support',
     partner: 'partner',
+    news: 'news',
     footerTagline: 'Health Care Information Technologies for Africa e.V.',
     footerSocialMedia: 'Social media',
     footerOffice: 'Office',
@@ -72,6 +74,7 @@ export const translationsDe: Translation = {
     projects: 'Projekte',
     support: 'Unterstützen',
     partner: 'Partner',
+    news: 'News',
     footerTagline: 'Health Care Information Technologies for Africa e.V.',
     footerSocialMedia: 'Soziale Medien',
     footerOffice: 'Geschäftsstelle',
