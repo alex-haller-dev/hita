@@ -5,7 +5,7 @@ import {resolvePath} from "../utils/path.ts";
 
 const navItems = [
     { label: translate('projects', Astro.currentLocale), href: resolvePath('/projects', Astro.currentLocale) },
-    { label: translate('support', Astro.currentLocale), href: "#" },
+    { label: translate('support', Astro.currentLocale), href: resolvePath('/support', Astro.currentLocale) },
 ];
 ---
 
