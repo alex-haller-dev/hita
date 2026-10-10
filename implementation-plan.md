@@ -27,3 +27,11 @@ If you implement something you weren't sure about, take note, and report that to
 where to look carefully.
 
 I will review each change individually afterwards.
+
+## Consistency across languages
+We have one page per language and type of page, but you need to make sure that when you implement the pages
+that across the languages the conent of the pages themselves should be the same. Meaning, if you look at
+the "support" page in german, you should see the same content as if you would look at the english page.
+
+The website itself needs to be different language pages only exist to translate the content, not substantially
+alter the content of the page.
