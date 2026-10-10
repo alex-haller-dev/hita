@@ -50,3 +50,15 @@ Make sure the website is optimised for both PC use and for mobile use.
 When you implement a new page make sure you always add german and english translations. If the layout of the page
 changes because of the language, you can use the en/ subfolder to implement a new component. If just the page itself
 changes then you can add the translations to the translation.ts file.
+
+## When to use pages and when components
+Pages are generally everything that has a URL attached to it. We have english and german pages as of now.
+
+If a page is just text we can implement the EN and DE page completely separately.
+If a page has styling and more complex components worth sharing we should use shared components.
+
+When we use shared components, we need to make sure that we use the translation file to display the correct
+text dynamically.
+
+If the page needs to look different because of the language (this is rare) we can implement the language specific
+implementation on the page itself without a shared component.
