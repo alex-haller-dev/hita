@@ -112,11 +112,11 @@ type Translation = {
 
 export const translationsEn: Translation = {
     // Navigation
-    aboutUs: 'about us',
-    projects: 'projects',
-    support: 'support',
-    partner: 'partner',
-    news: 'news',
+    aboutUs: 'About us',
+    projects: 'Projects',
+    support: 'Support',
+    partner: 'Partner',
+    news: 'News',
 
     // Footer
     footerTagline: 'Health Care Information Technologies for Africa e.V.',
