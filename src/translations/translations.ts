@@ -92,8 +92,11 @@ type Translation = {
     supportMembershipHeading: string
     supportMembershipText: string
     supportMembershipFull: string
+    supportMembershipFullPrice: string
     supportMembershipReduced: string
+    supportMembershipReducedPrice: string
     supportMembershipCorporate: string
+    supportMembershipCorporatePrice: string
     supportMembershipContact: string
     supportMembershipButton: string
     supportVolunteerHeading: string
@@ -209,8 +212,11 @@ export const translationsEn: Translation = {
     supportMembershipHeading: 'Become a member',
     supportMembershipText: 'As a member you actively support the work of HITA e.V. and help strengthen the association.',
     supportMembershipFull: 'Full membership',
+    supportMembershipFullPrice: '60€/Year',
     supportMembershipReduced: 'Reduced membership',
+    supportMembershipReducedPrice: '30€/Year',
     supportMembershipCorporate: 'Corporate membership',
+    supportMembershipCorporatePrice: '250€/Year',
     supportMembershipContact: 'Contact us at geschaeftsstelle@hita-ev.org to request a membership application form.',
     supportMembershipButton: 'Request application form',
     supportVolunteerHeading: 'Get active',
@@ -326,8 +332,11 @@ export const translationsDe: Translation = {
     supportMembershipHeading: 'Mitglied werden',
     supportMembershipText: 'Als Mitglied unterstützen Sie aktiv die Arbeit von HITA e.V. und helfen, den Verein zu stärken.',
     supportMembershipFull: 'Vollmitgliedschaft',
+    supportMembershipFullPrice: '60€/Jahr',
     supportMembershipReduced: 'Ermäßigte Mitgliedschaft',
+    supportMembershipReducedPrice: '30€/Jahr',
     supportMembershipCorporate: 'Fördermitgliedschaft',
+    supportMembershipCorporatePrice: '250€/Jahr',
     supportMembershipContact: 'Schreiben Sie uns an geschaeftsstelle@hita-ev.org, um ein Aufnahmeformular zu erhalten.',
     supportMembershipButton: 'Aufnahmeformular anfordern',
     supportVolunteerHeading: 'Aktiv mitarbeiten',
