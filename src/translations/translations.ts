@@ -46,22 +46,24 @@ type Translation = {
     // Home page additional sections
     homeMissionHeading: string
     homeMissionSubtitle: string
-    homeActivity1: string
-    homeActivity1Text: string
-    homeActivity2: string
-    homeActivity2Text: string
-    homeActivity3: string
-    homeActivity3Text: string
-    homeActivity4: string
-    homeActivity4Text: string
-    homeActivity5: string
-    homeActivity5Text: string
-    homeActivity6: string
-    homeActivity6Text: string
     homeSupportHeading: string
     homeSupportText: string
     homeSupportCTADonate: string
     homeSupportCTAJoin: string
+
+    // Activities
+    activity1: string
+    activity1Text: string
+    activity2: string
+    activity2Text: string
+    activity3: string
+    activity3Text: string
+    activity4: string
+    activity4Text: string
+    activity5: string
+    activity5Text: string
+    activity6: string
+    activity6Text: string
 
     // About Us page
     aboutUsSubtitle: string
@@ -161,22 +163,24 @@ export const translationsEn: Translation = {
     // Home page additional sections
     homeMissionHeading: 'What we do',
     homeMissionSubtitle: 'HITA e.V. works in six key areas to improve healthcare and education in rural Africa.',
-    homeActivity1: 'Professional training',
-    homeActivity1Text: 'We integrate modern eLearning into official nursing and midwifery curricula to raise the quality of professional education.',
-    homeActivity2: 'Computer labs',
-    homeActivity2Text: 'We establish and equip computer labs at training institutions with laptops, smartboards, and reliable internet access.',
-    homeActivity3: 'Capacity building',
-    homeActivity3Text: 'We train teachers and students in self-sufficient lab management, maintenance, and digital skills.',
-    homeActivity4: 'Medical facilities',
-    homeActivity4Text: 'We support hospitals and clinics with information technology to improve patient care and administrative processes.',
-    homeActivity5: 'Rural communities',
-    homeActivity5Text: 'We work with local communities to create sustainable improvements in healthcare and education access.',
-    homeActivity6: 'School partnerships',
-    homeActivity6Text: 'We build lasting partnerships with secondary schools and vocational institutions across Ghana.',
     homeSupportHeading: 'Support our work',
     homeSupportText: 'Every contribution helps us improve healthcare and education in rural Africa. Whether through a donation, membership, or volunteering – your support makes a difference.',
     homeSupportCTADonate: 'Donate now',
     homeSupportCTAJoin: 'Become a member',
+
+    // Activities
+    activity1: 'Professional training',
+    activity1Text: 'We integrate modern eLearning into official nursing and midwifery curricula to raise the quality of professional education.',
+    activity2: 'Computer labs',
+    activity2Text: 'We establish and equip computer labs at training institutions with laptops, smartboards, and reliable internet access.',
+    activity3: 'Capacity building',
+    activity3Text: 'We train teachers and students in self-sufficient lab management, maintenance, and digital skills.',
+    activity4: 'Medical facilities',
+    activity4Text: 'We support hospitals and clinics with information technology to improve patient care and administrative processes.',
+    activity5: 'Rural communities',
+    activity5Text: 'We work with local communities to create sustainable improvements in healthcare and education access.',
+    activity6: 'School partnerships',
+    activity6Text: 'We build lasting partnerships with secondary schools and vocational institutions across Ghana.',
 
     // About Us page
     aboutUsSubtitle: 'Volunteers improving healthcare and education in Africa through information technology since 2009.',
@@ -276,22 +280,24 @@ export const translationsDe: Translation = {
     // Home page additional sections
     homeMissionHeading: 'Was wir tun',
     homeMissionSubtitle: 'HITA e.V. arbeitet in sechs Bereichen, um die Gesundheitsversorgung und Bildung im ländlichen Afrika zu verbessern.',
-    homeActivity1: 'Fachausbildung',
-    homeActivity1Text: 'Wir integrieren modernes eLearning in offizielle Pflege- und Hebammenstudienpläne, um die Qualität der Berufsausbildung zu verbessern.',
-    homeActivity2: 'PC-Labore',
-    homeActivity2Text: 'Wir richten Computer-Labore an Ausbildungseinrichtungen ein und statten sie mit Laptops, Smartboards und Internetzugang aus.',
-    homeActivity3: 'Kapazitätsaufbau',
-    homeActivity3Text: 'Wir schulen Lehr- und Pflegekräfte im eigenständigen Laborbetrieb, in der Wartung und in digitalen Kompetenzen.',
-    homeActivity4: 'Medizinische Einrichtungen',
-    homeActivity4Text: 'Wir unterstützen Krankenhäuser und Kliniken mit Informationstechnologie, um die Patientenversorgung und Verwaltung zu verbessern.',
-    homeActivity5: 'Ländliche Gemeinschaft',
-    homeActivity5Text: 'Wir arbeiten mit lokalen Gemeinschaften zusammen, um nachhaltige Verbesserungen beim Zugang zur Gesundheitsversorgung und Bildung zu schaffen.',
-    homeActivity6: 'Schulpartnerschaften',
-    homeActivity6Text: 'Wir bauen dauerhafte Partnerschaften mit weiterführenden Schulen und Berufsschulen in ganz Ghana auf.',
     homeSupportHeading: 'Unterstützen Sie unsere Arbeit',
     homeSupportText: 'Jeder Beitrag hilft uns, die Gesundheitsversorgung und Bildung im ländlichen Afrika zu verbessern. Ob durch eine Spende, eine Mitgliedschaft oder ehrenamtliche Mitarbeit – Ihre Unterstützung macht einen Unterschied.',
     homeSupportCTADonate: 'Jetzt spenden',
     homeSupportCTAJoin: 'Mitglied werden',
+
+    // Activities
+    activity1: 'Fachausbildung',
+    activity1Text: 'Wir integrieren modernes eLearning in offizielle Pflege- und Hebammenstudienpläne, um die Qualität der Berufsausbildung zu verbessern.',
+    activity2: 'PC-Labore',
+    activity2Text: 'Wir richten Computer-Labore an Ausbildungseinrichtungen ein und statten sie mit Laptops, Smartboards und Internetzugang aus.',
+    activity3: 'Kapazitätsaufbau',
+    activity3Text: 'Wir schulen Lehr- und Pflegekräfte im eigenständigen Laborbetrieb, in der Wartung und in digitalen Kompetenzen.',
+    activity4: 'Medizinische Einrichtungen',
+    activity4Text: 'Wir unterstützen Krankenhäuser und Kliniken mit Informationstechnologie, um die Patientenversorgung und Verwaltung zu verbessern.',
+    activity5: 'Ländliche Gemeinschaft',
+    activity5Text: 'Wir arbeiten mit lokalen Gemeinschaften zusammen, um nachhaltige Verbesserungen beim Zugang zur Gesundheitsversorgung und Bildung zu schaffen.',
+    activity6: 'Schulpartnerschaften',
+    activity6Text: 'Wir bauen dauerhafte Partnerschaften mit weiterführenden Schulen und Berufsschulen in ganz Ghana auf.',
 
     // About Us page
     aboutUsSubtitle: 'Ehrenamtliche verbessern seit 2009 die Gesundheitsversorgung und Bildung in Afrika durch Informationstechnologie.',
