@@ -1,13 +1,24 @@
 ---
+const currentPath = Astro.url.pathname;
+const current = currentPath.startsWith('/en') ? 'en' : 'de';
+
+const getHref = (targetLang: string) => {
+    if (targetLang === 'en') {
+        if (current === 'en') return currentPath;
+        // Add /en prefix; trailing slash on root handled automatically
+        return `/en${currentPath}`;
+    } else {
+        if (current === 'de') return currentPath;
+        // Remove /en prefix
+        const stripped = currentPath.replace(/^\/en/, '');
+        return stripped || '/';
+    }
+};
+
 const languages = [
-    { code: "de", label: "DE", name: "Deutsch", href: "/" },
-    { code: "en", label: "EN", name: "English", href: "/en/" },
+    { code: 'de', label: 'DE', name: 'Deutsch', href: getHref('de') },
+    { code: 'en', label: 'EN', name: 'English', href: getHref('en') },
 ];
-
-const current = Astro.url.pathname.startsWith("/en") ? "en" : "de";
-
-// TODO: instead of routing to / and /en we should route to the current path and prefix it with en or remove then
-//  en prefix
 ---
 
 <div
@@ -23,12 +34,12 @@ const current = Astro.url.pathname.startsWith("/en") ? "en" : "de";
                 hreflang={lang.code}
                 lang={lang.code}
                 title={lang.name}
-                aria-current={active ? "true" : undefined}
+                aria-current={active ? 'true' : undefined}
                 class:list={[
-                    "rounded-full px-2.5 py-1 transition-colors sm:px-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand",
+                    'rounded-full px-2.5 py-1 transition-colors sm:px-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand',
                     active
-                        ? "bg-brand text-white shadow-sm"
-                        : "text-gray-600 hover:text-brand",
+                        ? 'bg-brand text-white shadow-sm'
+                        : 'text-gray-600 hover:text-brand',
                 ]}
             >
                 {lang.label}
