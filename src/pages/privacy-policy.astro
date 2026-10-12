@@ -1,8 +1,139 @@
 ---
-// TODO implement
 import LayoutDefault from '../layouts/layout.default.astro'
+import PageHeader from '../components/page-header.astro'
 ---
 
 <LayoutDefault>
-    <div>privacy-policy DE</div>
+    <PageHeader slot="hero" title="Datenschutzerklärung" />
+
+    <div class="py-16 sm:py-20">
+        <div class="mx-auto max-w-3xl px-4 sm:px-6">
+            <div class="prose prose-gray max-w-none">
+
+                <h2>1. Verantwortliche Stelle</h2>
+                <p>
+                    Verantwortlich für die Verarbeitung personenbezogener Daten auf dieser Website ist:
+                </p>
+                <p>
+                    Health Care Information Technologies for Africa e.V. (HITA e.V.)<br />
+                    c/o Marion Fellmann<br />
+                    Josef-Schmitt-Str. 4<br />
+                    D-97922 Lauda-Königshofen<br />
+                    E-Mail: <a href="mailto:geschaeftsstelle@hita-ev.org">geschaeftsstelle@hita-ev.org</a>
+                </p>
+
+                <h2>2. Grundlegendes zur Datenverarbeitung</h2>
+                <p>
+                    Diese Website ist eine statische Website und setzt keine Tracking-Cookies, keine
+                    Analysetools und keine sozialen Plugins ein. Wir erheben personenbezogene Daten
+                    nur in dem Umfang, der für den Betrieb der Website technisch notwendig ist,
+                    und geben diese nicht ohne Ihre ausdrückliche Einwilligung an Dritte weiter.
+                </p>
+
+                <h2>3. Server-Logfiles</h2>
+                <p>
+                    Beim Aufruf unserer Website werden durch den Webserver automatisch Informationen
+                    in sogenannten Server-Logfiles gespeichert. Dies sind:
+                </p>
+                <ul>
+                    <li>Browsertyp und -version</li>
+                    <li>Verwendetes Betriebssystem</li>
+                    <li>Referrer-URL (die zuvor besuchte Seite)</li>
+                    <li>Hostname des zugreifenden Rechners</li>
+                    <li>Uhrzeit der Serveranfrage</li>
+                    <li>IP-Adresse (anonymisiert)</li>
+                </ul>
+                <p>
+                    Diese Daten sind nicht bestimmten Personen zuordenbar. Eine Zusammenführung
+                    dieser Daten mit anderen Datenquellen wird nicht vorgenommen. Die Daten werden
+                    nach einer kurzen Speicherdauer gelöscht.
+                </p>
+                <p>
+                    Rechtsgrundlage für die Verarbeitung ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes
+                    Interesse am störungsfreien Betrieb der Website).
+                </p>
+
+                <h2>4. Kontaktaufnahme per E-Mail</h2>
+                <p>
+                    Wenn Sie uns per E-Mail kontaktieren, werden Ihre Angaben – einschließlich der
+                    von Ihnen angegebenen Kontaktdaten – zum Zweck der Bearbeitung Ihrer Anfrage
+                    und für eventuelle Rückfragen bei uns gespeichert. Diese Daten geben wir nicht
+                    ohne Ihre Einwilligung weiter.
+                </p>
+                <p>
+                    Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der
+                    Beantwortung von Anfragen) bzw. Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung),
+                    soweit Ihre Anfrage auf den Abschluss eines Vertrags gerichtet ist.
+                </p>
+
+                <h2>5. Ihre Rechte</h2>
+                <p>
+                    Sie haben das Recht:
+                </p>
+                <ul>
+                    <li>Auskunft über Ihre bei uns gespeicherten personenbezogenen Daten zu erhalten (Art. 15 DSGVO)</li>
+                    <li>Unrichtige Daten berichtigen zu lassen (Art. 16 DSGVO)</li>
+                    <li>Die Löschung Ihrer Daten zu verlangen (Art. 17 DSGVO)</li>
+                    <li>Die Verarbeitung Ihrer Daten einschränken zu lassen (Art. 18 DSGVO)</li>
+                    <li>Ihre Daten in einem gängigen Format zu erhalten (Datenübertragbarkeit, Art. 20 DSGVO)</li>
+                    <li>Der Verarbeitung Ihrer Daten zu widersprechen (Art. 21 DSGVO)</li>
+                    <li>Sich bei einer Datenschutzaufsichtsbehörde zu beschweren</li>
+                </ul>
+                <p>
+                    Für die Ausübung Ihrer Rechte wenden Sie sich bitte an:
+                    <a href="mailto:geschaeftsstelle@hita-ev.org">geschaeftsstelle@hita-ev.org</a>
+                </p>
+
+                <h2>6. Datensicherheit</h2>
+                <p>
+                    Diese Website nutzt aus Sicherheitsgründen und zum Schutz der Übertragung
+                    vertraulicher Inhalte eine SSL-/TLS-Verschlüsselung. Eine verschlüsselte
+                    Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von „http://"
+                    auf „https://" wechselt und an dem Schloss-Symbol in Ihrer Browserzeile.
+                </p>
+
+                <h2>7. Aktualität dieser Datenschutzerklärung</h2>
+                <p>
+                    Wir behalten uns vor, diese Datenschutzerklärung anzupassen, damit sie stets den
+                    aktuellen rechtlichen Anforderungen entspricht. Stand: Oktober 2026.
+                </p>
+
+            </div>
+        </div>
+    </div>
 </LayoutDefault>
+
+<style>
+    .prose h2 {
+        margin-top: 2rem;
+        margin-bottom: 0.75rem;
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #111827;
+    }
+    .prose h2:first-child {
+        margin-top: 0;
+    }
+    .prose p {
+        margin-bottom: 1rem;
+        line-height: 1.75;
+        color: #4b5563;
+    }
+    .prose ul {
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+        list-style-type: disc;
+        color: #4b5563;
+    }
+    .prose li {
+        margin-bottom: 0.375rem;
+        line-height: 1.625;
+    }
+    .prose a {
+        color: #e2263d;
+        text-decoration: none;
+    }
+    .prose a:hover {
+        text-decoration: underline;
+    }
+</style>
