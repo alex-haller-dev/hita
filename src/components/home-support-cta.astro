@@ -1,0 +1,35 @@
+---
+import { translate } from '../translations/translations';
+import { resolvePath } from '../utils/path';
+
+const locale = Astro.currentLocale ?? 'de';
+const t = (key: Parameters<typeof translate>[0]) => translate(key, locale);
+---
+
+<section class="bg-brand py-16 sm:py-20">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        <div class="flex flex-col items-center gap-8 text-center lg:flex-row lg:justify-between lg:text-left">
+            <div class="max-w-xl">
+                <h2 class="text-2xl font-bold tracking-tight text-white sm:text-3xl">{t('homeSupportHeading')}</h2>
+                <p class="mt-4 text-lg leading-relaxed text-white/80">{t('homeSupportText')}</p>
+            </div>
+            <div class="flex shrink-0 flex-wrap justify-center gap-3">
+                <a
+                    href={resolvePath('/support', locale)}
+                    class="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-brand shadow-sm transition-colors hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                >
+                    {t('homeSupportCTADonate')}
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" class="size-4">
+                        <path d="M12 21s-7.5-4.6-9.6-9.3C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4h2c.7-1.2 2.2-2.4 4.3-2.4 3.7 0 5.8 3.8 4.3 7.2C19.5 16.4 12 21 12 21z" />
+                    </svg>
+                </a>
+                <a
+                    href={resolvePath('/support', locale) + '#membership'}
+                    class="inline-flex items-center gap-2 rounded-full border-2 border-white/40 px-6 py-3 text-sm font-semibold text-white transition-colors hover:border-white hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                >
+                    {t('homeSupportCTAJoin')}
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
