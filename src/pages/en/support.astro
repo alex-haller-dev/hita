@@ -1,8 +1,15 @@
 ---
-// TODO implement
 import LayoutDefault from '../../layouts/layout.default.astro'
+import PageHeader from '../../components/page-header.astro'
+import SupportContent from '../../components/support-content.astro'
+import { translate } from '../../translations/translations'
 ---
 
 <LayoutDefault>
-    <div>Support EN</div>
+    <PageHeader
+        slot="hero"
+        title={translate('support', 'en')}
+        subtitle={translate('supportSubtitle', 'en')}
+    />
+    <SupportContent />
 </LayoutDefault>
