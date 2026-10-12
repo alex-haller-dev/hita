@@ -1,13 +1,15 @@
 ---
-
 import LayoutDefault from '../layouts/layout.default.astro'
 import Hero from '../components/hero.astro'
+import Activities from '../components/activities.astro'
+import HomeSupportCta from '../components/home-support-cta.astro'
 import FaqSection from '../components/faq-section.astro'
-import {FAQ} from "../constants/FAQ.ts";
+import { FAQ } from '../constants/FAQ.ts'
 ---
 
 <LayoutDefault>
-	<!-- TODO: add more sections to the main page -->
-	<Hero slot="hero" />
-	<FaqSection FAQItems={FAQ.de} />
+    <Hero slot="hero" />
+    <Activities />
+    <FaqSection FAQItems={FAQ.de} heading="FAQ" />
+    <HomeSupportCta />
 </LayoutDefault>
