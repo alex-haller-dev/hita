@@ -3,13 +3,12 @@ import LanguageSwitcher from "./language-switcher.astro";
 import {translate} from "../translations/translations.ts";
 import {resolvePath} from "../utils/path.ts";
 
-// TODO sort nav items to match how they are usually structured
 const navItems = [
     { label: translate('aboutUs', Astro.currentLocale), href: resolvePath('/about-us', Astro.currentLocale) },
-    { label: translate('projects', Astro.currentLocale), href: resolvePath('/projects', Astro.currentLocale) },
     { label: translate('support', Astro.currentLocale), href: resolvePath('/support', Astro.currentLocale) },
-    { label: translate('partner', Astro.currentLocale), href: resolvePath('/partner', Astro.currentLocale) },
+    { label: translate('projects', Astro.currentLocale), href: resolvePath('/projects', Astro.currentLocale) },
     { label: translate('news', Astro.currentLocale), href: resolvePath('/news', Astro.currentLocale) },
+    { label: translate('partner', Astro.currentLocale), href: resolvePath('/partner', Astro.currentLocale) },
 ];
 ---
 
