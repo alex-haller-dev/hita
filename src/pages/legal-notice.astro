@@ -1,8 +1,113 @@
 ---
-// TODO implement
 import LayoutDefault from '../layouts/layout.default.astro'
+import PageHeader from '../components/page-header.astro'
 ---
 
 <LayoutDefault>
-    <div>legal-notice DE</div>
+    <PageHeader slot="hero" title="Impressum" />
+
+    <div class="py-16 sm:py-20">
+        <div class="mx-auto max-w-3xl px-4 sm:px-6">
+            <div class="prose prose-gray max-w-none">
+
+                <h2>Angaben gemäß § 5 TMG</h2>
+                <p>
+                    Health Care Information Technologies for Africa e.V.<br />
+                    (HITA e.V.)<br />
+                    c/o Marion Fellmann<br />
+                    Josef-Schmitt-Str. 4<br />
+                    D-97922 Lauda-Königshofen
+                </p>
+
+                <h2>Kontakt</h2>
+                <p>
+                    Telefon: <a href="tel:+4915678952247">+49 15678 952247</a><br />
+                    E-Mail: <a href="mailto:geschaeftsstelle@hita-ev.org">geschaeftsstelle@hita-ev.org</a><br />
+                    Website: <a href="https://www.hita-ev.org">www.hita-ev.org</a>
+                </p>
+
+                <h2>Vereinsregister</h2>
+                <p>
+                    Eingetragen im Vereinsregister beim Amtsgericht Freiburg<br />
+                    Registernummer: VR 380 930
+                </p>
+
+                <h2>Gemeinnützigkeit</h2>
+                <p>
+                    HITA e.V. ist laut Bescheinigung vom 04.01.2023 vom Finanzamt Tauberbischofsheim
+                    als gemeinnützig anerkannt und trägt die Steuernummer 52001 / 96370.
+                </p>
+
+                <h2>Spendenkonto</h2>
+                <p>
+                    Kontoinhaber: Health Care Information Technologies for Africa e.V.<br />
+                    Bank: Deutsche Bank<br />
+                    IBAN: DE86 6907 0024 0050 6006 00<br />
+                    BIC: DEUTDEDB690
+                </p>
+
+                <h2>Verantwortlich für den Inhalt</h2>
+                <p>
+                    Der Vorstand von HITA e.V. ist verantwortlich für den Inhalt dieser Website.
+                </p>
+
+                <h2>Haftungsausschluss</h2>
+                <p>
+                    Die Inhalte dieser Website wurden mit größtmöglicher Sorgfalt erstellt.
+                    Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir
+                    jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir für eigene
+                    Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.
+                    Wir sind jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde
+                    Informationen zu überwachen oder nach Umständen zu forschen, die auf eine
+                    rechtswidrige Tätigkeit hinweisen.
+                </p>
+                <p>
+                    Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen
+                    nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche
+                    Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten
+                    Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden
+                    Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.
+                </p>
+
+                <h2>Urheberrecht</h2>
+                <p>
+                    Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten
+                    unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung,
+                    Verbreitung und jede Art der Verwertung außerhalb der Grenzen des
+                    Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors
+                    bzw. Erstellers.
+                </p>
+                <p>
+                    © {new Date().getFullYear()} Health Care Information Technologies for Africa e.V. (HITA e.V.).
+                    Alle Rechte vorbehalten.
+                </p>
+
+            </div>
+        </div>
+    </div>
 </LayoutDefault>
+
+<style>
+    .prose h2 {
+        margin-top: 2rem;
+        margin-bottom: 0.75rem;
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #111827;
+    }
+    .prose h2:first-child {
+        margin-top: 0;
+    }
+    .prose p {
+        margin-bottom: 1rem;
+        line-height: 1.75;
+        color: #4b5563;
+    }
+    .prose a {
+        color: #e2263d;
+        text-decoration: none;
+    }
+    .prose a:hover {
+        text-decoration: underline;
+    }
+</style>
