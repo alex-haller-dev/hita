@@ -1,8 +1,15 @@
 ---
-// TODO
 import LayoutDefault from '../../layouts/layout.default.astro'
+import PageHeader from '../../components/page-header.astro'
+import PartnerContent from '../../components/partner-content.astro'
+import { translate } from '../../translations/translations'
 ---
 
 <LayoutDefault>
-    <div>Partner EN</div>
+    <PageHeader
+        slot="hero"
+        title={translate('partner', 'en')}
+        subtitle={translate('partnerSubtitle', 'en')}
+    />
+    <PartnerContent />
 </LayoutDefault>

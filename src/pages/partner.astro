@@ -1,11 +1,15 @@
 ---
-/*
-TODO: this page should include all the information that was previously under the "Kooperationen" section
-on the original website.
-*/
 import LayoutDefault from '../layouts/layout.default.astro'
+import PageHeader from '../components/page-header.astro'
+import PartnerContent from '../components/partner-content.astro'
+import { translate } from '../translations/translations'
 ---
 
 <LayoutDefault>
-    <div>Partner GER</div>
+    <PageHeader
+        slot="hero"
+        title={translate('partner', 'de')}
+        subtitle={translate('partnerSubtitle', 'de')}
+    />
+    <PartnerContent />
 </LayoutDefault>
