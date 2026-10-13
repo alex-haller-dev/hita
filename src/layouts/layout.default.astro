@@ -7,9 +7,9 @@ import "../styles/global.css";
 <html lang={Astro.currentLocale ?? "de"}>
     <head>
         <meta charset="utf-8" />
-        <!-- TODO: add proper hita fav icon -->
+        <link rel="icon" href="/favicon.ico" sizes="32x32" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
         <title>HITA e.V. | Health Care Information Technologies for Africa e.V.</title>
@@ -17,7 +17,6 @@ import "../styles/global.css";
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
     </head>
-    <!-- TODO: there seems to be some margin to the right of the page when you are in mobile for all the page content -->
     <body class="flex min-h-screen flex-col bg-white font-sans text-gray-800 antialiased">
         <Header />
         <main class="flex-1">
