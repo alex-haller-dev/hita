@@ -4,13 +4,14 @@ import Hero from '../components/hero.astro'
 import Activities from '../components/activities.astro'
 import HomeSupportCta from '../components/home-support-cta.astro'
 import FaqSection from '../components/faq-section.astro'
+import PartnerLogos from '../components/partner-logos.astro'
 import { FAQ } from '../constants/FAQ.ts'
 ---
 
 <LayoutDefault>
     <Hero slot="hero" />
     <Activities />
-    <!-- TODO: we should add a section where we highlight our most prominent partners with their logos -->
+    <PartnerLogos />
     <FaqSection FAQItems={FAQ.de} heading="FAQ" />
     <HomeSupportCta />
 </LayoutDefault>

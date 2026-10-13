@@ -1,0 +1,66 @@
+---
+import { Image } from 'astro:assets';
+import { translate } from '../translations/translations';
+import { resolvePath } from '../utils/path';
+import Icon from './icon.astro';
+import ministryOfHealthGhana from '../assets/images/partners/ministry-of-health-ghana.png';
+import ghanaHealthService from '../assets/images/partners/ghana-health-service.png';
+import germanCooperation from '../assets/images/partners/german-cooperation.jpg';
+import schmitzStiftungen from '../assets/images/partners/schmitz-stiftungen.jpg';
+import uhas from '../assets/images/partners/uhas.png';
+import catholicUniversityGhana from '../assets/images/partners/catholic-university-ghana.png';
+import innoSpace from '../assets/images/partners/inno-space.png';
+
+const locale = Astro.currentLocale ?? 'de';
+const t = (key: Parameters<typeof translate>[0]) => translate(key, locale);
+
+// The partners highlighted under "Unsere Partner" on the original website
+const partners = [
+    { name: 'Ministry of Health, Ghana', href: 'https://www.moh.gov.gh/', logo: ministryOfHealthGhana },
+    { name: 'Ghana Health Service', href: 'http://www.ghanahealthservice.org/', logo: ghanaHealthService },
+    { name: 'German Cooperation – Deutsche Zusammenarbeit', href: 'https://accra.diplo.de/gh-en', logo: germanCooperation },
+    { name: 'Schmitz-Stiftungen', href: 'https://www.schmitz-stiftungen.de/', logo: schmitzStiftungen },
+    { name: 'University of Health and Allied Sciences', href: 'https://www.uhas.edu.gh/', logo: uhas },
+    { name: 'Catholic University of Ghana', href: 'https://www.cug.edu.gh/', logo: catholicUniversityGhana },
+    { name: 'inno-space', href: 'https://inno-space.de/', logo: innoSpace },
+];
+---
+
+<section class="bg-white py-16 sm:py-20">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        <div class="mb-12 text-center">
+            <h2 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{t('homePartnersHeading')}</h2>
+            <p class="mx-auto mt-4 max-w-2xl text-lg text-gray-600">{t('homePartnersText')}</p>
+        </div>
+
+        <ul class="flex flex-wrap items-center justify-center gap-x-10 gap-y-8 sm:gap-x-14">
+            {partners.map((partner) => (
+                <li>
+                    <a
+                        href={partner.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title={partner.name}
+                        class="block rounded-md transition focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand lg:opacity-70 lg:grayscale lg:hover:opacity-100 lg:hover:grayscale-0 lg:focus-visible:opacity-100 lg:focus-visible:grayscale-0"
+                    >
+                        <Image
+                            src={partner.logo}
+                            alt={partner.name}
+                            class="h-14 w-auto max-w-40 object-contain sm:h-16 sm:max-w-48"
+                        />
+                    </a>
+                </li>
+            ))}
+        </ul>
+
+        <div class="mt-12 text-center">
+            <a
+                href={resolvePath('/partner', locale)}
+                class="inline-flex items-center gap-2 rounded-full border border-gray-300 bg-white px-5 py-2.5 text-sm font-semibold text-gray-800 transition-colors hover:border-brand hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+            >
+                {t('homePartnersLink')}
+                <Icon name="arrowRight" class="size-4" />
+            </a>
+        </div>
+    </div>
+</section>
