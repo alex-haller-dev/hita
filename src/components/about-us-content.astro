@@ -1,6 +1,14 @@
 ---
 import { translate } from '../translations/translations';
 import Activities from "./activities.astro";
+import Icon from "./icon.astro";
+import { resolvePath } from "../utils/path";
+import { Image } from "astro:assets";
+import { TRANSPARENCY } from "../constants/transparency.ts";
+import transparencyLogo from "../assets/images/transparente-zivilgesellschaft.png";
+import thomasErkert from "../assets/images/board/thomas-erkert.jpg";
+import hildegardMackert from "../assets/images/board/hildegard-mackert.jpg";
+import danielGerlach from "../assets/images/board/daniel-gerlach.jpg";
 
 const locale = Astro.currentLocale ?? 'de';
 const t = (key: Parameters<typeof translate>[0]) => translate(key, locale);
@@ -11,6 +19,18 @@ const stats = [
     { value: '100%', label: t('heroStatVolunteers') },
 ];
 
+const transparency = locale === 'en' ? TRANSPARENCY.en : TRANSPARENCY.de;
+
+const board = [
+    { name: 'Thomas Erkert', role: t('boardChair'), email: 'thomas.erkert@hita-ev.org', photo: thomasErkert },
+    { name: 'Hildegard Mackert', role: t('boardMember'), email: 'hildegard.mackert@hita-ev.org', photo: hildegardMackert },
+    { name: 'Daniel Gerlach', role: t('boardMember'), email: 'daniel.gerlach@hita-ev.org', photo: danielGerlach },
+];
+
+const secondaryButtonClass =
+    'inline-flex items-center gap-2 rounded-full border border-gray-300 bg-white px-5 py-2.5 text-sm font-semibold text-gray-800 transition-colors hover:border-brand hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand';
+const linkClass =
+    'inline-flex items-center gap-1.5 rounded-sm text-sm font-semibold text-brand hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand';
 ---
 
 <!-- Mission -->
@@ -21,11 +41,11 @@ const stats = [
                 <h2 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{t('aboutUsMissionHeading')}</h2>
                 <p class="mt-6 text-lg leading-relaxed text-gray-600">{t('aboutUsMissionText')}</p>
             </div>
-            <div class="grid grid-cols-3 gap-6 content-start">
+            <div class="grid grid-cols-3 gap-3 content-start sm:gap-6">
                 {stats.map((stat) => (
-                    <div class="rounded-2xl bg-brand/5 p-6 text-center">
-                        <div class="text-3xl font-bold text-brand sm:text-4xl">{stat.value}</div>
-                        <div class="mt-2 text-sm leading-snug text-gray-600">{stat.label}</div>
+                    <div class="min-w-0 rounded-2xl bg-brand/5 px-2 py-5 text-center sm:p-6">
+                        <div class="text-2xl font-bold text-brand sm:text-4xl">{stat.value}</div>
+                        <div class="mt-2 text-xs leading-snug hyphens-auto break-words text-gray-600 sm:text-sm">{stat.label}</div>
                     </div>
                 ))}
             </div>
@@ -33,10 +53,7 @@ const stats = [
     </div>
 </section>
 
-<!-- Activities -->
-<section class="bg-gray-50 py-16 sm:py-20">
-    <Activities />
-</section>
+<Activities />
 
 <!-- Approach -->
 <section class="py-16 sm:py-20">
@@ -65,6 +82,98 @@ const stats = [
         <div class="mx-auto max-w-3xl">
             <h2 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{t('aboutUsAssociationHeading')}</h2>
             <p class="mt-6 leading-relaxed text-gray-600">{t('aboutUsAssociationText')}</p>
+            <p class="mt-4 leading-relaxed text-gray-600">{t('aboutUsAnnualReportsText')}</p>
+            <div class="mt-6 flex flex-wrap gap-3">
+                <a href={resolvePath('/annual-reports', locale)} class={secondaryButtonClass}>
+                    {t('annualReports')}
+                    <Icon name="arrowRight" class="size-4" />
+                </a>
+                <a href="/documents/hita-satzung.pdf" target="_blank" rel="noopener" class={secondaryButtonClass}>
+                    <Icon name="download" class="size-4" />
+                    {t('aboutUsStatutesDownload')}
+                </a>
+            </div>
         </div>
+    </div>
+</section>
+
+<!-- Transparency -->
+<section class="py-16 sm:py-20">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        <div class="grid gap-10 lg:grid-cols-[1fr_2fr] lg:gap-16">
+            <div>
+                <h2 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{t('transparencyHeading')}</h2>
+                <p class="mt-6 leading-relaxed text-gray-600">{t('transparencyText')}</p>
+                <a
+                    href="https://www.transparency.de/mitmachen/initiative-transparente-zivilgesellschaft/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="mt-8 block w-fit rounded-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
+                >
+                    <Image src={transparencyLogo} alt="Initiative Transparente Zivilgesellschaft" class="h-14 w-auto" />
+                </a>
+                <a
+                    href="https://www.transparency.de/mitmachen/initiative-transparente-zivilgesellschaft/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class:list={['mt-4', linkClass]}
+                >
+                    {t('transparencyMore')}
+                    <Icon name="arrowRight" class="size-4" />
+                </a>
+            </div>
+
+            <ol class="grid gap-x-8 gap-y-6 sm:grid-cols-2">
+                {transparency.map((item, index) => (
+                    <li class="flex gap-4">
+                        <span class="flex size-8 shrink-0 items-center justify-center rounded-full bg-brand/10 text-sm font-bold text-brand" aria-hidden="true">
+                            {index + 1}
+                        </span>
+                        <div class="min-w-0">
+                            <h3 class="font-semibold text-gray-900">{item.title}</h3>
+                            <p class="mt-1 text-sm leading-relaxed text-gray-600">{item.text}</p>
+                            {item.link && (
+                                <a
+                                    href={item.link.href}
+                                    target={item.link.external ? '_blank' : undefined}
+                                    rel={item.link.external ? 'noopener' : undefined}
+                                    class:list={['mt-2', linkClass]}
+                                >
+                                    {item.link.label}
+                                    <Icon name="arrowRight" class="size-4" />
+                                </a>
+                            )}
+                        </div>
+                    </li>
+                ))}
+            </ol>
+        </div>
+    </div>
+</section>
+
+<!-- Board -->
+<section class="border-t border-gray-100 bg-gray-50 py-16 sm:py-20">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        <div class="mb-12 max-w-3xl">
+            <h2 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{t('boardHeading')}</h2>
+            <p class="mt-6 leading-relaxed text-gray-600">{t('boardText')}</p>
+        </div>
+
+        <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {board.map((member) => (
+                <li class="flex flex-col items-center rounded-2xl bg-white p-6 text-center shadow-sm ring-1 ring-gray-100">
+                    <Image
+                        src={member.photo}
+                        alt={member.name}
+                        class="size-24 rounded-full object-cover ring-4 ring-brand/10"
+                    />
+                    <h3 class="mt-4 font-semibold text-gray-900">{member.name}</h3>
+                    <p class="mt-1 text-sm text-gray-500">{member.role}</p>
+                    <a href={`mailto:${member.email}`} class:list={['mt-3 wrap-anywhere', linkClass]}>
+                        {member.email}
+                    </a>
+                </li>
+            ))}
+        </ul>
     </div>
 </section>
