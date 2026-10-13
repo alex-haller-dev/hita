@@ -5,6 +5,8 @@ type Translation = {
     support: string
     partner: string
     news: string
+    mainNavigation: string
+    menuToggle: string
 
     // Footer
     footerTagline: string
@@ -50,6 +52,9 @@ type Translation = {
     homeSupportText: string
     homeSupportCTADonate: string
     homeSupportCTAJoin: string
+    homePartnersHeading: string
+    homePartnersText: string
+    homePartnersLink: string
 
     // Activities
     activity1: string
@@ -113,6 +118,29 @@ type Translation = {
     partnerSecondary: string
     partnerPrivate: string
     partnerOther: string
+
+    // Annual reports
+    annualReports: string
+    annualReportsSubtitle: string
+    annualReport: string
+    annualReportsHighlights: string
+    annualReportsReadMore: string
+    annualReportsDownload: string
+    annualReportsBack: string
+    aboutUsAnnualReportsText: string
+
+    // About us: statutes, transparency and board
+    aboutUsStatutesDownload: string
+    transparencyHeading: string
+    transparencyText: string
+    transparencyMore: string
+    boardHeading: string
+    boardText: string
+    boardChair: string
+    boardMember: string
+    supportCrowdfundingHeading: string
+    supportCrowdfundingText: string
+    supportCrowdfundingButton: string
 }
 
 export const translationsEn: Translation = {
@@ -122,6 +150,8 @@ export const translationsEn: Translation = {
     support: 'Support',
     partner: 'Partner',
     news: 'News',
+    mainNavigation: 'Main navigation',
+    menuToggle: 'Menu',
 
     // Footer
     footerTagline: 'Health Care Information Technologies for Africa e.V.',
@@ -170,6 +200,9 @@ export const translationsEn: Translation = {
     homeSupportText: 'Every contribution helps us improve healthcare and education in rural Africa. Whether through a donation, membership, or volunteering – your support makes a difference.',
     homeSupportCTADonate: 'Donate now',
     homeSupportCTAJoin: 'Become a member',
+    homePartnersHeading: 'Our partners',
+    homePartnersText: 'Together with strong partners in Ghana and Germany, we improve healthcare and education.',
+    homePartnersLink: 'View all partners',
 
     // Activities
     activity1: 'Professional training',
@@ -233,6 +266,29 @@ export const translationsEn: Translation = {
     partnerSecondary: 'Secondary Schools',
     partnerPrivate: 'Private Schools',
     partnerOther: 'Other Partners',
+
+    // Annual reports
+    annualReports: 'Annual reports',
+    annualReportsSubtitle: 'Every year, HITA e.V. publishes a report on the association’s work. The annual reports cover the projects carried out in the respective year at home and abroad, as well as information on the association.',
+    annualReport: 'Annual report',
+    annualReportsHighlights: 'Highlights',
+    annualReportsReadMore: 'Read full report',
+    annualReportsDownload: 'Download activity report (PDF, German)',
+    annualReportsBack: 'All annual reports',
+    aboutUsAnnualReportsText: 'We transparently document how we use our funds and what we achieve each year in our annual reports.',
+
+    // About us: statutes, transparency and board
+    aboutUsStatutesDownload: 'Statutes (PDF, German)',
+    transparencyHeading: 'Transparency',
+    transparencyText: 'In accordance with the requirements of the “Transparent Civil Society Initiative”, launched by Transparency International Deutschland e.V. and others, HITA e.V. undertakes to disclose what objectives the association pursues, where its funds come from, how they are used and who decides on their use.',
+    transparencyMore: 'More about the initiative',
+    boardHeading: 'Executive board',
+    boardText: 'HITA e.V. does not employ any salaried staff. The board and members work on a voluntary basis. We therefore ask you, where possible, to contact us by email.',
+    boardChair: 'Chairman of the executive board',
+    boardMember: 'Member of the executive board',
+    supportCrowdfundingHeading: 'Shop online and help',
+    supportCrowdfundingText: 'With WeCanHelp you can support HITA while shopping online – at no extra cost. When you shop at one of over 30,000 partner shops via HITA’s WeCanHelp page, part of the commission is donated to our association.',
+    supportCrowdfundingButton: 'HITA on WeCanHelp',
 }
 
 export const translationsDe: Translation = {
@@ -242,6 +298,8 @@ export const translationsDe: Translation = {
     support: 'Unterstützen',
     partner: 'Partner',
     news: 'News',
+    mainNavigation: 'Hauptnavigation',
+    menuToggle: 'Menü',
 
     // Footer
     footerTagline: 'Health Care Information Technologies for Africa e.V.',
@@ -290,6 +348,9 @@ export const translationsDe: Translation = {
     homeSupportText: 'Jeder Beitrag hilft uns, die Gesundheitsversorgung und Bildung im ländlichen Afrika zu verbessern. Ob durch eine Spende, eine Mitgliedschaft oder ehrenamtliche Mitarbeit – Ihre Unterstützung macht einen Unterschied.',
     homeSupportCTADonate: 'Jetzt spenden',
     homeSupportCTAJoin: 'Mitglied werden',
+    homePartnersHeading: 'Unsere Partner',
+    homePartnersText: 'Gemeinsam mit starken Partnern in Ghana und Deutschland verbessern wir Gesundheitsversorgung und Bildung.',
+    homePartnersLink: 'Alle Partner ansehen',
 
     // Activities
     activity1: 'Fachausbildung',
@@ -353,6 +414,29 @@ export const translationsDe: Translation = {
     partnerSecondary: 'Weiterführende Schulen',
     partnerPrivate: 'Privatschulen',
     partnerOther: 'Sonstige Partner',
+
+    // Annual reports
+    annualReports: 'Jahresberichte',
+    annualReportsSubtitle: 'Jedes Jahr veröffentlicht HITA e.V. einen Bericht über die Vereinsarbeit. Die Jahresberichte enthalten Berichte zu den im jeweiligen Jahr durchgeführten Projekten im In- und Ausland sowie Informationen zum Verein.',
+    annualReport: 'Jahresbericht',
+    annualReportsHighlights: 'Highlights',
+    annualReportsReadMore: 'Vollständigen Bericht lesen',
+    annualReportsDownload: 'Tätigkeitsbericht herunterladen (PDF)',
+    annualReportsBack: 'Alle Jahresberichte',
+    aboutUsAnnualReportsText: 'Wie wir unsere Mittel einsetzen und was wir jedes Jahr erreichen, dokumentieren wir transparent in unseren Jahresberichten.',
+
+    // About us: statutes, transparency and board
+    aboutUsStatutesDownload: 'Vereinssatzung (PDF)',
+    transparencyHeading: 'Transparenz',
+    transparencyText: 'Nach den Vorgaben der „Initiative Transparente Zivilgesellschaft“, die u. a. von Transparency International Deutschland e.V. ins Leben gerufen wurde, verpflichtet sich HITA e.V. offenzulegen, welche Ziele der Verein verfolgt, woher seine Mittel stammen, wie diese verwendet werden und wer über die Verwendung entscheidet.',
+    transparencyMore: 'Mehr zur Initiative',
+    boardHeading: 'Vorstand',
+    boardText: 'HITA e.V. beschäftigt keine angestellten Mitarbeiter. Vorstand und Mitglieder engagieren sich ehrenamtlich. Daher bitten wir Sie, wo möglich, um eine Kontaktaufnahme per E-Mail.',
+    boardChair: 'Vereinsvorsitzender',
+    boardMember: 'Vorstandsmitglied',
+    supportCrowdfundingHeading: 'Online einkaufen und helfen',
+    supportCrowdfundingText: 'Über WeCanHelp können Sie HITA bei Ihren Online-Einkäufen unterstützen – ohne Mehrkosten. Kaufen Sie über die WeCanHelp-Seite von HITA in einem von über 30.000 Partner-Shops ein, geht ein Teil der Provision als Spende an unseren Verein.',
+    supportCrowdfundingButton: 'HITA auf WeCanHelp',
 }
 
 export function translate(key: keyof Translation, locale: string | undefined) {
