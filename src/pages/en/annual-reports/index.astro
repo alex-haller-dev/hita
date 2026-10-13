@@ -1,0 +1,15 @@
+---
+import LayoutDefault from '../../../layouts/layout.default.astro'
+import PageHeader from '../../../components/page-header.astro'
+import AnnualReportsContent from '../../../components/annual-reports-content.astro'
+import { translate } from '../../../translations/translations'
+---
+
+<LayoutDefault>
+    <PageHeader
+        slot="hero"
+        title={translate('annualReports', 'en')}
+        subtitle={translate('annualReportsSubtitle', 'en')}
+    />
+    <AnnualReportsContent />
+</LayoutDefault>

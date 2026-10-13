@@ -1,0 +1,52 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import { translate } from '../translations/translations';
+import { resolvePath } from '../utils/path';
+import Icon from './icon.astro';
+
+interface Props {
+    report: CollectionEntry<'annualReports'>
+}
+
+const { report } = Astro.props
+const { Content } = await render(report)
+
+const locale = Astro.currentLocale ?? 'de';
+const t = (key: Parameters<typeof translate>[0]) => translate(key, locale);
+
+// Styles for the rendered markdown, which we can't put classes on directly
+const proseClass = [
+    'hyphens-auto break-words sm:hyphens-manual',
+    '[&_h2]:mt-12 [&_h2]:mb-4 [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:tracking-tight [&_h2]:text-gray-900 [&_h2:first-child]:mt-0',
+    '[&_h3]:mt-8 [&_h3]:mb-3 [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:text-gray-900',
+    '[&_p]:mb-4 [&_p]:leading-relaxed [&_p]:text-gray-600',
+    '[&_ul]:mb-6 [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-5 [&_ul]:text-gray-600 [&_li]:leading-relaxed [&_li::marker]:text-brand',
+    '[&_a]:font-medium [&_a]:text-brand [&_a]:underline-offset-2 [&_a:hover]:underline',
+    '[&_img]:mx-auto [&_img]:my-6 [&_img]:block [&_img]:rounded-xl [&_img]:shadow-sm [&_img]:ring-1 [&_img]:ring-gray-100',
+    '[&_table]:mb-6 [&_table]:w-full [&_table]:text-sm [&_th]:border-b [&_th]:border-gray-200 [&_th]:py-2 [&_th]:pr-4 [&_th]:text-left [&_th]:font-semibold [&_th]:text-gray-900 [&_td]:border-b [&_td]:border-gray-100 [&_td]:py-2 [&_td]:pr-4 [&_td]:text-gray-600',
+].join(' ')
+
+const backLinkClass =
+    'inline-flex items-center gap-2 rounded-full text-sm font-semibold text-gray-600 transition-colors hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand'
+const backHref = resolvePath('/annual-reports', locale)
+---
+
+<div class="py-12 sm:py-16">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6">
+        <a href={backHref} class={backLinkClass}>
+            <Icon name="arrowLeft" class="size-4" />
+            {t('annualReportsBack')}
+        </a>
+
+        <article class:list={['mt-10', proseClass]}>
+            <Content />
+        </article>
+
+        <div class="mt-12 border-t border-gray-100 pt-8">
+            <a href={backHref} class={backLinkClass}>
+                <Icon name="arrowLeft" class="size-4" />
+                {t('annualReportsBack')}
+            </a>
+        </div>
+    </div>
+</div>

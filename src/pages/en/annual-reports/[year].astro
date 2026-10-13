@@ -1,0 +1,24 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content'
+import LayoutDefault from '../../../layouts/layout.default.astro'
+import PageHeader from '../../../components/page-header.astro'
+import AnnualReportArticle from '../../../components/annual-report-article.astro'
+import { translate } from '../../../translations/translations'
+
+// Only years with a written report get a detail page, the others link to their PDF
+export async function getStaticPaths() {
+    const reports = await getCollection('annualReports', (entry) => entry.id.startsWith('en/') && !!entry.body?.trim())
+    return reports.map((report) => ({ params: { year: String(report.data.year) }, props: { report } }))
+}
+
+interface Props {
+    report: CollectionEntry<'annualReports'>
+}
+
+const { report } = Astro.props
+---
+
+<LayoutDefault>
+    <PageHeader slot="hero" title={`${translate('annualReport', 'en')} ${report.data.year}`} />
+    <AnnualReportArticle report={report} />
+</LayoutDefault>
