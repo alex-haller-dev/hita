@@ -1,0 +1,33 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import Icon from './icon.astro';
+import type { IconName } from '../constants/icons.ts';
+
+interface Props extends HTMLAttributes<'div'> {
+    title: string
+    icon: IconName
+    headingLevel?: 2 | 3
+    // default: icon above the title, inline: icon beside the title, large: roomier card with a column layout
+    variant?: 'default' | 'inline' | 'large'
+}
+
+const { title, icon, headingLevel = 3, variant = 'default', class: className, ...attrs } = Astro.props
+
+const Heading = `h${headingLevel}` as 'h2' | 'h3'
+
+const styles = {
+    default: { card: 'p-6', header: 'contents', badge: 'mb-4 size-10', icon: 'size-5', heading: 'mb-2 font-semibold text-gray-900' },
+    inline: { card: 'p-6', header: 'mb-4 flex items-center gap-3', badge: 'size-9 shrink-0', icon: 'size-4', heading: 'font-semibold text-gray-900' },
+    large: { card: 'flex flex-col p-6 sm:p-8', header: 'contents', badge: 'mb-5 size-12', icon: 'size-6', heading: 'text-xl font-bold text-gray-900' },
+}[variant]
+---
+
+<div class:list={['rounded-2xl bg-white shadow-sm ring-1 ring-gray-100', styles.card, className]} {...attrs}>
+    <div class={styles.header}>
+        <div class:list={['flex items-center justify-center rounded-xl bg-brand/10', styles.badge]}>
+            <Icon name={icon} class:list={['text-brand', styles.icon]} />
+        </div>
+        <Heading class={styles.heading}>{title}</Heading>
+    </div>
+    <slot />
+</div>
