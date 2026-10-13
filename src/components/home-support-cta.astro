@@ -1,6 +1,7 @@
 ---
 import { translate } from '../translations/translations';
 import { resolvePath } from '../utils/path';
+import Icon from './icon.astro';
 
 const locale = Astro.currentLocale ?? 'de';
 const t = (key: Parameters<typeof translate>[0]) => translate(key, locale);
@@ -19,9 +20,7 @@ const t = (key: Parameters<typeof translate>[0]) => translate(key, locale);
                     class="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-brand shadow-sm transition-colors hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 >
                     {t('homeSupportCTADonate')}
-                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" class="size-4">
-                        <path d="M12 21s-7.5-4.6-9.6-9.3C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4h2c.7-1.2 2.2-2.4 4.3-2.4 3.7 0 5.8 3.8 4.3 7.2C19.5 16.4 12 21 12 21z" />
-                    </svg>
+                    <Icon name="heart" class="size-4" />
                 </a>
                 <a
                     href={resolvePath('/support', locale) + '#membership'}
