@@ -1,40 +1,33 @@
 ---
 import { translate } from '../translations/translations';
+import Card from './card.astro';
+import Icon from './icon.astro';
 
 const locale = Astro.currentLocale ?? 'de';
 const t = (key: Parameters<typeof translate>[0]) => translate(key, locale);
 
 const iban = 'DE86 6907 0024 0050 6006 00';
+// On narrow cards the IBAN wraps between its two halves instead of leaving the last digits on their own line
+const ibanGroups = iban.split(' ');
+const ibanLines = [ibanGroups.slice(0, 3).join(' '), ibanGroups.slice(3).join(' ')];
 const bic = 'DEUTDEDB690';
 ---
 
-<!-- TODO: we have lots of svg drawn icons all over the app, we should turn them into re-usable components -->
 <div class="py-16 sm:py-20">
     <div class="mx-auto max-w-6xl px-4 sm:px-6">
         <div class="grid gap-8 lg:grid-cols-3">
 
             <!-- Monetary Donation -->
-            <div class="flex flex-col rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-100">
-                <div class="mb-5 flex size-12 items-center justify-center rounded-xl bg-brand/10">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 text-brand" aria-hidden="true">
-                        <path d="M12 21s-7.5-4.6-9.6-9.3C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4h2c.7-1.2 2.2-2.4 4.3-2.4 3.7 0 5.8 3.8 4.3 7.2C19.5 16.4 12 21 12 21z" />
-                    </svg>
-                </div>
-
-                <h2 class="text-xl font-bold text-gray-900">{t('supportDonateHeading')}</h2>
+            <Card title={t('supportDonateHeading')} icon="heart" headingLevel={2} variant="large">
                 <p class="mt-3 leading-relaxed text-gray-600">{t('supportDonateText')}</p>
 
                 <ul class="mt-4 space-y-2">
                     <li class="flex gap-2 text-sm text-gray-600">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="mt-0.5 size-4 shrink-0 text-brand" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
-                        </svg>
+                        <Icon name="checkCircle" class="mt-0.5 size-4 shrink-0 text-brand" />
                         {t('supportDonateExample1')}
                     </li>
                     <li class="flex gap-2 text-sm text-gray-600">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="mt-0.5 size-4 shrink-0 text-brand" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
-                        </svg>
+                        <Icon name="checkCircle" class="mt-0.5 size-4 shrink-0 text-brand" />
                         {t('supportDonateExample2')}
                     </li>
                 </ul>
@@ -42,20 +35,21 @@ const bic = 'DEUTDEDB690';
                 <div class="mt-6 rounded-xl bg-gray-50 p-4 text-sm">
                     <p class="mb-3 font-semibold text-gray-700">{t('supportBankDetails')}</p>
                     <dl class="space-y-1.5 text-gray-600">
-                        <div class="flex justify-between gap-4">
+                        <div class="flex flex-wrap justify-between gap-x-4">
                             <dt>{t('footerAccountHolder')}</dt>
                             <dd class="font-medium text-gray-800">HITA e.V.</dd>
                         </div>
-                        <div class="flex justify-between gap-4">
+                        <div class="flex flex-wrap justify-between gap-x-4">
                             <dt>{t('footerBank')}</dt>
                             <dd class="font-medium text-gray-800">Deutsche Bank</dd>
                         </div>
-                        <div class="flex justify-between gap-4">
+                        <div class="flex flex-wrap justify-between gap-x-4">
                             <dt>IBAN</dt>
-                            <!-- TODO the IBAN isn't just one line, we have a line break for the last 2 digits -->
-                            <dd class="font-mono font-medium text-gray-800">{iban}</dd>
+                            <dd class="ml-auto text-right font-mono font-medium text-gray-800">
+                                <span class="whitespace-nowrap">{ibanLines[0]}</span>{' '}<span class="whitespace-nowrap">{ibanLines[1]}</span>
+                            </dd>
                         </div>
-                        <div class="flex justify-between gap-4">
+                        <div class="flex flex-wrap justify-between gap-x-4">
                             <dt>BIC</dt>
                             <dd class="font-mono font-medium text-gray-800">{bic}</dd>
                         </div>
@@ -71,17 +65,10 @@ const bic = 'DEUTDEDB690';
                 >
                     {t('supportDonateButton')}
                 </button>
-            </div>
+            </Card>
 
             <!-- Membership -->
-            <div id="membership" class="flex flex-col rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-100">
-                <div class="mb-5 flex size-12 items-center justify-center rounded-xl bg-brand/10">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-6 text-brand" aria-hidden="true">
-                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                    </svg>
-                </div>
-
-                <h2 class="text-xl font-bold text-gray-900">{t('supportMembershipHeading')}</h2>
+            <Card id="membership" title={t('supportMembershipHeading')} icon="users" headingLevel={2} variant="large">
                 <p class="mt-3 leading-relaxed text-gray-600">{t('supportMembershipText')}</p>
 
                 <ul class="mt-6 space-y-3">
@@ -99,7 +86,7 @@ const bic = 'DEUTDEDB690';
                     </li>
                 </ul>
 
-                <p class="mt-4 text-sm leading-relaxed text-gray-500">{t('supportMembershipContact')}</p>
+                <p class="mt-4 text-sm leading-relaxed wrap-anywhere text-gray-500">{t('supportMembershipContact')}</p>
 
                 <a
                     href="mailto:geschaeftsstelle@hita-ev.org"
@@ -107,17 +94,10 @@ const bic = 'DEUTDEDB690';
                 >
                     {t('supportMembershipButton')}
                 </a>
-            </div>
+            </Card>
 
             <!-- Volunteer -->
-            <div class="flex flex-col rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-100">
-                <div class="mb-5 flex size-12 items-center justify-center rounded-xl bg-brand/10">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-6 text-brand" aria-hidden="true">
-                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-                    </svg>
-                </div>
-
-                <h2 class="text-xl font-bold text-gray-900">{t('supportVolunteerHeading')}</h2>
+            <Card title={t('supportVolunteerHeading')} icon="activity" headingLevel={2} variant="large">
                 <p class="mt-3 leading-relaxed text-gray-600">{t('supportVolunteerText')}</p>
                 <p class="mt-4 leading-relaxed text-gray-600">{t('supportVolunteerDetails')}</p>
 
@@ -127,8 +107,28 @@ const bic = 'DEUTDEDB690';
                 >
                     {t('supportVolunteerButton')}
                 </a>
-            </div>
+            </Card>
 
+        </div>
+
+        <!-- Crowdfunding -->
+        <div class="mt-8 flex flex-col gap-6 rounded-2xl bg-brand/5 p-6 ring-1 ring-brand/10 sm:p-8 md:flex-row md:items-center">
+            <div class="flex size-12 shrink-0 items-center justify-center rounded-xl bg-brand/10">
+                <Icon name="shoppingBag" class="size-6 text-brand" />
+            </div>
+            <div class="flex-1">
+                <h2 class="text-xl font-bold text-gray-900">{t('supportCrowdfundingHeading')}</h2>
+                <p class="mt-2 leading-relaxed text-gray-600">{t('supportCrowdfundingText')}</p>
+            </div>
+            <a
+                href="https://www.wecanhelp.de/hita-ev"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+            >
+                {t('supportCrowdfundingButton')}
+                <Icon name="arrowRight" class="size-4" />
+            </a>
         </div>
     </div>
 </div>
