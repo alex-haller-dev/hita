@@ -3,6 +3,7 @@ import LayoutDefault from '../layouts/layout.default.astro'
 import PageHeader from '../components/page-header.astro'
 import { translate } from '../translations/translations'
 import { resolvePath } from '../utils/path'
+import Icon from '../components/icon.astro'
 ---
 
 <LayoutDefault>
@@ -10,10 +11,7 @@ import { resolvePath } from '../utils/path'
 
     <div class="flex flex-col items-center justify-center py-24 px-4 text-center">
         <div class="mb-6 flex size-16 items-center justify-center rounded-full bg-gray-100">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-8 text-gray-400" aria-hidden="true">
-                <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 0-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/>
-                <path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/>
-            </svg>
+            <Icon name="newspaper" class="size-8 text-gray-400" />
         </div>
         <h2 class="text-xl font-bold text-gray-900">{translate('comingSoonTitle', 'de')}</h2>
         <p class="mt-3 max-w-sm text-gray-500">{translate('comingSoonText', 'de')}</p>
