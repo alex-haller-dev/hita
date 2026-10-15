@@ -8,4 +8,3 @@
 ## Open questions
 - How much content should we add for the individual partners?
 - Is WeCanHelp still a thing?
-- Which legal office is ours? Finanzamt Konstanz or Tauberbischofheim?
