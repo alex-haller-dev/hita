@@ -1,0 +1,18 @@
+---
+import type { NewsCategory } from '../utils/news';
+
+interface Props {
+    categories?: NewsCategory[]
+}
+
+// Unresolved references (e.g. a deleted category) come back as null
+const categories = (Astro.props.categories ?? []).filter(Boolean)
+---
+
+{categories.length > 0 && (
+    <ul class="contents">
+        {categories.map((category) => (
+            <li class="rounded-full bg-brand/10 px-3 py-1 text-xs font-semibold text-brand">{category.name}</li>
+        ))}
+    </ul>
+)}

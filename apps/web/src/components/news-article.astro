@@ -6,6 +6,7 @@ import { formatNewsDate, type NewsPost } from '../utils/news';
 import { urlFor } from '../utils/sanity';
 import Icon from './icon.astro';
 import NewsImage from './news-image.astro';
+import NewsCategories from './news-categories.astro';
 
 interface Props {
     post: NewsPost
@@ -44,9 +45,7 @@ const backHref = resolvePath('/news', locale)
             <time datetime={post.date} class="text-sm font-semibold tracking-wide text-gray-500 uppercase">
                 {formatNewsDate(post.date, locale)}
             </time>
-            {post.categories?.map((category) => (
-                <span class="rounded-full bg-brand/10 px-3 py-1 text-xs font-semibold text-brand">{category.name}</span>
-            ))}
+            <NewsCategories categories={post.categories} />
         </div>
 
         {post.featured_media && (

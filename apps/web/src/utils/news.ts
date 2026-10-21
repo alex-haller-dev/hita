@@ -6,6 +6,8 @@ type Locale = 'de' | 'en'
 
 type FeaturedMedia = SanityImageSource & { alt_text?: string }
 
+export type NewsCategory = { name: string; slug: string }
+
 export type NewsSummary = {
     _id: string
     title: string
@@ -13,16 +15,17 @@ export type NewsSummary = {
     date: string
     excerpt?: string
     featured_media?: FeaturedMedia
+    categories?: NewsCategory[]
 }
 
 export type NewsPost = NewsSummary & {
     content?: TypedObject[]
-    categories?: { name: string; slug: string }[]
     // Slugs of this post in other languages, linked by the document-internationalization plugin
     translations?: { language: Locale; slug: string }[]
 }
 
-const summaryFields = `_id, title, "slug": slug.current, date, excerpt, featured_media`
+const summaryFields = `_id, title, "slug": slug.current, date, excerpt, featured_media,
+    "categories": categories[]->{ name, "slug": slug.current }`
 
 export function getNewsSummaries(locale: Locale) {
     return sanityClient.fetch<NewsSummary[]>(
@@ -36,7 +39,6 @@ export function getNewsPosts(locale: Locale) {
         `*[_type == "post" && language == $locale && defined(slug.current)] {
             ${summaryFields},
             content,
-            "categories": categories[]->{ name, "slug": slug.current },
             "translations": *[_type == "translation.metadata" && references(^._id)][0].translations[]
                 .value->{ language, "slug": slug.current }
         }`,
