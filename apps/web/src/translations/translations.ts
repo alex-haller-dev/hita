@@ -127,6 +127,11 @@ type Translation = {
     annualReportsReadMore: string
     annualReportsDownload: string
     annualReportsBack: string
+
+    // News
+    newsEmpty: string
+    newsReadMore: string
+    newsBack: string
     aboutUsAnnualReportsText: string
 
     // About us: statutes, transparency and board
@@ -275,6 +280,11 @@ export const translationsEn: Translation = {
     annualReportsReadMore: 'Read full report',
     annualReportsDownload: 'Download activity report (PDF, German)',
     annualReportsBack: 'All annual reports',
+
+    // News
+    newsEmpty: 'No news yet. Please check back later.',
+    newsReadMore: 'Read more',
+    newsBack: 'All news',
     aboutUsAnnualReportsText: 'We transparently document how we use our funds and what we achieve each year in our annual reports.',
 
     // About us: statutes, transparency and board
@@ -423,6 +433,11 @@ export const translationsDe: Translation = {
     annualReportsReadMore: 'Vollständigen Bericht lesen',
     annualReportsDownload: 'Tätigkeitsbericht herunterladen (PDF)',
     annualReportsBack: 'Alle Jahresberichte',
+
+    // News
+    newsEmpty: 'Noch keine News vorhanden. Bitte schauen Sie später wieder vorbei.',
+    newsReadMore: 'Weiterlesen',
+    newsBack: 'Alle News',
     aboutUsAnnualReportsText: 'Wie wir unsere Mittel einsetzen und was wir jedes Jahr erreichen, dokumentieren wir transparent in unseren Jahresberichten.',
 
     // About us: statutes, transparency and board
