@@ -1,0 +1,75 @@
+---
+import { PortableText } from 'astro-portabletext';
+import { translate } from '../translations/translations';
+import { resolvePath } from '../utils/path';
+import { formatNewsDate, type NewsPost } from '../utils/news';
+import { urlFor } from '../utils/sanity';
+import Icon from './icon.astro';
+import NewsImage from './news-image.astro';
+
+interface Props {
+    post: NewsPost
+}
+
+const { post } = Astro.props
+
+const locale = Astro.currentLocale ?? 'de';
+const t = (key: Parameters<typeof translate>[0]) => translate(key, locale);
+
+// Styles for the rendered Portable Text, which we can't put classes on directly
+const proseClass = [
+    'hyphens-auto break-words sm:hyphens-manual',
+    '[&_h2]:mt-12 [&_h2]:mb-4 [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:tracking-tight [&_h2]:text-gray-900',
+    '[&_h3]:mt-8 [&_h3]:mb-3 [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:text-gray-900',
+    '[&_p]:mb-4 [&_p]:leading-relaxed [&_p]:text-gray-600',
+    '[&_ul]:mb-6 [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-5 [&_ul]:text-gray-600 [&_li]:leading-relaxed [&_li::marker]:text-brand',
+    '[&_ol]:mb-6 [&_ol]:list-decimal [&_ol]:space-y-2 [&_ol]:pl-5 [&_ol]:text-gray-600',
+    '[&_blockquote]:my-6 [&_blockquote]:border-l-4 [&_blockquote]:border-brand [&_blockquote]:pl-4 [&_blockquote]:italic',
+    '[&_a]:font-medium [&_a]:text-brand [&_a]:underline-offset-2 [&_a:hover]:underline',
+].join(' ')
+
+const backLinkClass =
+    'inline-flex items-center gap-2 rounded-full text-sm font-semibold text-gray-600 transition-colors hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand'
+const backHref = resolvePath('/news', locale)
+---
+
+<div class="py-12 sm:py-16">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6">
+        <a href={backHref} class={backLinkClass}>
+            <Icon name="arrowLeft" class="size-4" />
+            {t('newsBack')}
+        </a>
+
+        <div class="mt-10 flex flex-wrap items-center gap-x-4 gap-y-2">
+            <time datetime={post.date} class="text-sm font-semibold tracking-wide text-gray-500 uppercase">
+                {formatNewsDate(post.date, locale)}
+            </time>
+            {post.categories?.map((category) => (
+                <span class="rounded-full bg-brand/10 px-3 py-1 text-xs font-semibold text-brand">{category.name}</span>
+            ))}
+        </div>
+
+        {post.featured_media && (
+            <img
+                src={urlFor(post.featured_media).width(1200).height(675).url()}
+                alt={post.featured_media.alt_text ?? ''}
+                width="1200"
+                height="675"
+                class="mt-6 aspect-video w-full rounded-2xl object-cover shadow-sm ring-1 ring-gray-100"
+            />
+        )}
+
+        {post.content && (
+            <article class:list={['mt-10', proseClass]}>
+                <PortableText value={post.content} components={{ type: { image: NewsImage } }} />
+            </article>
+        )}
+
+        <div class="mt-12 border-t border-gray-100 pt-8">
+            <a href={backHref} class={backLinkClass}>
+                <Icon name="arrowLeft" class="size-4" />
+                {t('newsBack')}
+            </a>
+        </div>
+    </div>
+</div>
