@@ -13,8 +13,11 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@sanity/client": "^8.10.1",
+    "@sanity/image-url": "^2.1.1",
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.3.5",
+    "astro-portabletext": "^1.0.1",
     "tailwindcss": "^4.3.3"
   }
 }
