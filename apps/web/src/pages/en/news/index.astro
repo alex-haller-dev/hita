@@ -1,0 +1,11 @@
+---
+import LayoutDefault from '../../../layouts/layout.default.astro'
+import PageHeader from '../../../components/page-header.astro'
+import NewsList from '../../../components/news-list.astro'
+import { translate } from '../../../translations/translations'
+---
+
+<LayoutDefault>
+    <PageHeader slot="hero" title={translate('news', 'en')} />
+    <NewsList />
+</LayoutDefault>

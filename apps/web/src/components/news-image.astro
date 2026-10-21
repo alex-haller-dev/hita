@@ -1,0 +1,22 @@
+---
+import type { TypedObject } from 'astro-portabletext/types';
+import type { SanityImageSource } from '@sanity/image-url';
+import { urlFor } from '../utils/sanity';
+
+// Renders image blocks inside the Portable Text content of a news post
+interface Props {
+    node: TypedObject & SanityImageSource & { alt_text?: string; caption?: string }
+}
+
+const { node } = Astro.props
+---
+
+<figure class="my-8">
+    <img
+        src={urlFor(node).width(1200).fit('max').url()}
+        alt={node.alt_text ?? ''}
+        loading="lazy"
+        class="mx-auto block rounded-xl shadow-sm ring-1 ring-gray-100"
+    />
+    {node.caption && <figcaption class="mt-3 text-center text-sm text-gray-500">{node.caption}</figcaption>}
+</figure>

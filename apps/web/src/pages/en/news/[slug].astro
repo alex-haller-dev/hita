@@ -1,0 +1,29 @@
+---
+import LayoutDefault from '../../../layouts/layout.default.astro'
+import PageHeader from '../../../components/page-header.astro'
+import NewsArticle from '../../../components/news-article.astro'
+import { getNewsPosts, type NewsPost } from '../../../utils/news'
+import { resolvePath } from '../../../utils/path'
+
+export async function getStaticPaths() {
+    const posts = await getNewsPosts('en')
+    return posts.map((post) => ({ params: { slug: post.slug }, props: { post } }))
+}
+
+interface Props {
+    post: NewsPost
+}
+
+const { post } = Astro.props
+
+// Link the language switcher to the translated post, or to the news overview if there is none
+const translation = post.translations?.find((t) => t?.language === 'de')
+const alternates = {
+    de: resolvePath(translation ? `/news/${translation.slug}` : '/news', 'de'),
+}
+---
+
+<LayoutDefault alternates={alternates}>
+    <PageHeader slot="hero" title={post.title} />
+    <NewsArticle post={post} />
+</LayoutDefault>
