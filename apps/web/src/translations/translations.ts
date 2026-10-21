@@ -132,6 +132,12 @@ type Translation = {
     newsEmpty: string
     newsReadMore: string
     newsBack: string
+    newsSearchLabel: string
+    newsSearchPlaceholder: string
+    newsCategoryLabel: string
+    newsAllCategories: string
+    newsNoResults: string
+    newsResetFilters: string
     aboutUsAnnualReportsText: string
 
     // About us: statutes, transparency and board
@@ -285,6 +291,12 @@ export const translationsEn: Translation = {
     newsEmpty: 'No news yet. Please check back later.',
     newsReadMore: 'Read more',
     newsBack: 'All news',
+    newsSearchLabel: 'Search news',
+    newsSearchPlaceholder: 'Search news…',
+    newsCategoryLabel: 'Filter by category',
+    newsAllCategories: 'All categories',
+    newsNoResults: 'No news match your search.',
+    newsResetFilters: 'Reset filters',
     aboutUsAnnualReportsText: 'We transparently document how we use our funds and what we achieve each year in our annual reports.',
 
     // About us: statutes, transparency and board
@@ -438,6 +450,12 @@ export const translationsDe: Translation = {
     newsEmpty: 'Noch keine News vorhanden. Bitte schauen Sie später wieder vorbei.',
     newsReadMore: 'Weiterlesen',
     newsBack: 'Alle News',
+    newsSearchLabel: 'News durchsuchen',
+    newsSearchPlaceholder: 'News durchsuchen…',
+    newsCategoryLabel: 'Nach Kategorie filtern',
+    newsAllCategories: 'Alle Kategorien',
+    newsNoResults: 'Keine passenden News gefunden.',
+    newsResetFilters: 'Filter zurücksetzen',
     aboutUsAnnualReportsText: 'Wie wir unsere Mittel einsetzen und was wir jedes Jahr erreichen, dokumentieren wir transparent in unseren Jahresberichten.',
 
     // About us: statutes, transparency and board

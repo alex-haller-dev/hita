@@ -1,18 +1,29 @@
 ---
 import { translate } from '../translations/translations';
 import { resolvePath } from '../utils/path';
-import { formatNewsDate, getNewsSummaries } from '../utils/news';
+import { formatNewsDate, getNewsSummaries, type NewsCategory } from '../utils/news';
 import { urlFor } from '../utils/sanity';
 import Icon from './icon.astro';
 import NewsCategories from './news-categories.astro';
+import NewsFilters from './news-filters.astro';
 
 const locale = Astro.currentLocale === 'en' ? 'en' : 'de';
 const t = (key: Parameters<typeof translate>[0]) => translate(key, locale);
 
 const posts = await getNewsSummaries(locale);
+
+const postCategories = (categories?: NewsCategory[]) => (categories ?? []).filter(Boolean)
+
+// Search index for the client-side fuzzy search
+const searchIndex = posts.map((post) => ({
+    id: post._id,
+    title: post.title,
+    excerpt: post.excerpt ?? '',
+    categories: postCategories(post.categories).map((category) => category.name),
+}))
 ---
 
-<div class="py-16 sm:py-20">
+<div class="py-16 sm:py-20" data-news-list>
     <div class="mx-auto max-w-6xl px-4 sm:px-6">
         {posts.length === 0 ? (
             <div class="flex flex-col items-center py-8 text-center">
@@ -22,43 +33,139 @@ const posts = await getNewsSummaries(locale);
                 <p class="max-w-sm text-gray-500">{t('newsEmpty')}</p>
             </div>
         ) : (
-            <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {posts.map((post) => (
-                    <li>
-                        <a
-                            href={resolvePath(`/news/${post.slug}`, locale)}
-                            class="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-gray-100 transition-shadow hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
-                        >
-                            <div class="aspect-video bg-gray-100">
-                                {post.featured_media && (
-                                    <img
-                                        src={urlFor(post.featured_media).width(640).height(360).url()}
-                                        alt={post.featured_media.alt_text ?? ''}
-                                        width="640"
-                                        height="360"
-                                        loading="lazy"
-                                        class="size-full object-cover"
-                                    />
-                                )}
-                            </div>
-                            <div class="flex flex-1 flex-col p-6">
-                                <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
-                                    <time datetime={post.date} class="text-xs font-semibold tracking-wide text-gray-500 uppercase">
-                                        {formatNewsDate(post.date, locale)}
-                                    </time>
-                                    <NewsCategories categories={post.categories} />
+            <>
+                <NewsFilters posts={posts} />
+
+                <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-news-items>
+                    {posts.map((post) => (
+                        <li data-news-item data-id={post._id} data-categories={postCategories(post.categories).map((category) => category.slug).join(' ')}>
+                            <a
+                                href={resolvePath(`/news/${post.slug}`, locale)}
+                                class="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-gray-100 transition-shadow hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+                            >
+                                <div class="aspect-video bg-gray-100">
+                                    {post.featured_media && (
+                                        <img
+                                            src={urlFor(post.featured_media).width(640).height(360).url()}
+                                            alt={post.featured_media.alt_text ?? ''}
+                                            width="640"
+                                            height="360"
+                                            loading="lazy"
+                                            class="size-full object-cover"
+                                        />
+                                    )}
                                 </div>
-                                <h2 class="mt-2 font-semibold text-gray-900 transition-colors group-hover:text-brand">{post.title}</h2>
-                                {post.excerpt && <p class="mt-3 line-clamp-3 text-sm leading-relaxed text-gray-600">{post.excerpt}</p>}
-                                <span class="mt-auto inline-flex items-center gap-2 pt-5 text-sm font-semibold text-brand">
-                                    {t('newsReadMore')}
-                                    <Icon name="arrowRight" class="size-4" />
-                                </span>
-                            </div>
-                        </a>
-                    </li>
-                ))}
-            </ul>
+                                <div class="flex flex-1 flex-col p-6">
+                                    <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
+                                        <time datetime={post.date} class="text-xs font-semibold tracking-wide text-gray-500 uppercase">
+                                            {formatNewsDate(post.date, locale)}
+                                        </time>
+                                        <NewsCategories categories={post.categories} />
+                                    </div>
+                                    <h2 class="mt-2 font-semibold text-gray-900 transition-colors group-hover:text-brand">{post.title}</h2>
+                                    {post.excerpt && <p class="mt-3 line-clamp-3 text-sm leading-relaxed text-gray-600">{post.excerpt}</p>}
+                                    <span class="mt-auto inline-flex items-center gap-2 pt-5 text-sm font-semibold text-brand">
+                                        {t('newsReadMore')}
+                                        <Icon name="arrowRight" class="size-4" />
+                                    </span>
+                                </div>
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+
+                <div role="status" hidden data-news-no-results>
+                    <div class="flex flex-col items-center py-8 text-center">
+                        <p class="text-gray-500">{t('newsNoResults')}</p>
+                        <button
+                            type="button"
+                            class="mt-6 inline-flex items-center gap-2 rounded-full border border-gray-300 bg-white px-5 py-2.5 text-sm font-semibold text-gray-800 transition-colors hover:border-brand hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+                            data-news-reset
+                        >
+                            {t('newsResetFilters')}
+                        </button>
+                    </div>
+                </div>
+
+                <script is:inline type="application/json" data-news-index set:html={JSON.stringify(searchIndex).replaceAll('<', '\\u003c')}></script>
+            </>
         )}
     </div>
 </div>
+
+<script>
+    import Fuse from "fuse.js"
+
+    type SearchEntry = { id: string; title: string; excerpt: string; categories: string[] }
+
+    const root = document.querySelector<HTMLElement>("[data-news-list]")
+    const form = root?.querySelector<HTMLFormElement>("[data-news-filters]")
+    const search = root?.querySelector<HTMLInputElement>("[data-news-search]")
+    const list = root?.querySelector<HTMLElement>("[data-news-items]")
+    const index = root?.querySelector<HTMLScriptElement>("[data-news-index]")
+
+    if (root && form && search && list && index) {
+        const category = root.querySelector<HTMLSelectElement>("[data-news-category]")
+        const noResults = root.querySelector<HTMLElement>("[data-news-no-results]")
+        const items = new Map(
+            [...list.querySelectorAll<HTMLElement>("[data-news-item]")].map((item) => [item.dataset.id ?? "", item]),
+        )
+        // Server-rendered order is newest first, which we restore when the search is cleared
+        const dateOrder = [...items.keys()]
+
+        const fuse = new Fuse<SearchEntry>(JSON.parse(index.textContent ?? "[]"), {
+            keys: [
+                { name: "title", weight: 3 },
+                { name: "excerpt", weight: 2 },
+                { name: "categories", weight: 1 },
+            ],
+            threshold: 0.35,
+            ignoreLocation: true,
+            ignoreDiacritics: true,
+            minMatchCharLength: 2,
+        })
+
+        const update = () => {
+            const query = search.value.trim()
+            const selectedCategory = category?.value ?? ""
+
+            // With a search query, results are ordered by relevance instead of date
+            const ids = query ? fuse.search(query).map((result) => result.item.id) : dateOrder
+            const visible = ids.filter(
+                (id) => !selectedCategory || items.get(id)?.dataset.categories?.split(" ").includes(selectedCategory),
+            )
+
+            items.forEach((item) => (item.hidden = true))
+            visible.forEach((id) => {
+                const item = items.get(id)
+                if (!item) return
+                item.hidden = false
+                list.append(item)
+            })
+            if (noResults) noResults.hidden = visible.length > 0
+
+            // Keep the filters in the URL so filtered results can be shared and survive a reload
+            const url = new URL(window.location.href)
+            query ? url.searchParams.set("q", query) : url.searchParams.delete("q")
+            selectedCategory ? url.searchParams.set("category", selectedCategory) : url.searchParams.delete("category")
+            history.replaceState(null, "", url)
+        }
+
+        const params = new URLSearchParams(window.location.search)
+        search.value = params.get("q") ?? ""
+        if (category && [...category.options].some((option) => option.value === params.get("category"))) {
+            category.value = params.get("category") ?? ""
+        }
+
+        search.addEventListener("input", update)
+        category?.addEventListener("change", update)
+        form.addEventListener("submit", (event) => event.preventDefault())
+        root.querySelector("[data-news-reset]")?.addEventListener("click", () => {
+            form.reset()
+            update()
+            search.focus()
+        })
+
+        if (search.value || category?.value) update()
+    }
+</script>

@@ -1,0 +1,54 @@
+---
+import { translate } from '../translations/translations';
+import type { NewsSummary } from '../utils/news';
+import Icon from './icon.astro';
+
+// Search and category filter for the news list. The filtering itself happens in the news-list script.
+interface Props {
+    posts: NewsSummary[]
+}
+
+const { posts } = Astro.props
+
+const locale = Astro.currentLocale ?? 'de';
+const t = (key: Parameters<typeof translate>[0]) => translate(key, locale);
+
+// Categories that are used by at least one post, with their post count
+const categoryCounts = new Map<string, { name: string; count: number }>()
+for (const category of posts.flatMap((post) => (post.categories ?? []).filter(Boolean))) {
+    const entry = categoryCounts.get(category.slug) ?? { name: category.name, count: 0 }
+    categoryCounts.set(category.slug, { ...entry, count: entry.count + 1 })
+}
+const categories = [...categoryCounts].sort(([, a], [, b]) => a.name.localeCompare(b.name, locale))
+
+const controlClass =
+    'w-full rounded-full border border-gray-300 bg-white py-2.5 text-sm text-gray-800 transition-colors hover:border-gray-400 focus:border-gray-400 focus:ring-4 focus:ring-gray-200/70 focus:outline-none'
+---
+
+<form role="search" class="mb-10 flex flex-col gap-3 sm:flex-row" data-news-filters>
+    <div class="relative flex-1">
+        <label for="news-search" class="sr-only">{t('newsSearchLabel')}</label>
+        <Icon name="search" class="pointer-events-none absolute top-1/2 left-4 size-4 -translate-y-1/2 text-gray-400" />
+        <input
+            id="news-search"
+            type="search"
+            name="q"
+            autocomplete="off"
+            placeholder={t('newsSearchPlaceholder')}
+            class={`${controlClass} pr-4 pl-10`}
+            data-news-search
+        />
+    </div>
+    {categories.length > 0 && (
+        <div class="relative sm:w-64">
+            <label for="news-category" class="sr-only">{t('newsCategoryLabel')}</label>
+            <select id="news-category" name="category" class={`${controlClass} appearance-none pr-10 pl-4`} data-news-category>
+                <option value="">{t('newsAllCategories')}</option>
+                {categories.map(([slug, { name, count }]) => (
+                    <option value={slug}>{name} ({count})</option>
+                ))}
+            </select>
+            <Icon name="chevronDown" class="pointer-events-none absolute top-1/2 right-4 size-4 -translate-y-1/2 text-gray-500" />
+        </div>
+    )}
+</form>

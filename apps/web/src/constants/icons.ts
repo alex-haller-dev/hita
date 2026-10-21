@@ -11,6 +11,8 @@ export const icons = {
     menu: { body: '<path d="M4 6h16M4 12h16M4 18h16"/>' },
     arrowLeft: { body: '<path d="M19 12H5M11 6l-6 6 6 6"/>' },
     close: { body: '<path d="M18 6 6 18M6 6l12 12"/>' },
+    search: { body: '<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>' },
+    chevronDown: { body: '<path d="m6 9 6 6 6-6"/>' },
     download: { body: '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5M12 15V3"/>' },
     checkCircle: {
         viewBox: '0 0 20 20',
