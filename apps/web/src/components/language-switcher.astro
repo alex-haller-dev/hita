@@ -1,8 +1,17 @@
 ---
+export type Alternates = Partial<Record<'de' | 'en', string>>
+
+interface Props {
+    // Overrides the default /en prefix logic, for pages whose URL differs per language
+    alternates?: Alternates
+}
+
+const { alternates } = Astro.props
 const currentPath = Astro.url.pathname;
 const current = currentPath.startsWith('/en') ? 'en' : 'de';
 
-const getHref = (targetLang: string) => {
+const getHref = (targetLang: 'de' | 'en') => {
+    if (alternates?.[targetLang]) return alternates[targetLang];
     if (targetLang === 'en') {
         if (current === 'en') return currentPath;
         // Add /en prefix; trailing slash on root handled automatically

@@ -3,6 +3,13 @@ import LanguageSwitcher from "./language-switcher.astro";
 import Icon from "./icon.astro";
 import {translate} from "../translations/translations.ts";
 import {resolvePath} from "../utils/path.ts";
+import type { Alternates } from "./language-switcher.astro";
+
+interface Props {
+    alternates?: Alternates
+}
+
+const { alternates } = Astro.props
 
 const navItems = [
     { label: translate('aboutUs', Astro.currentLocale), href: resolvePath('/about-us', Astro.currentLocale) },
@@ -17,7 +24,7 @@ const navLabel = translate('mainNavigation', Astro.currentLocale)
 ---
 
 <header data-header class="group/header sticky top-0 z-50 border-b border-gray-200 bg-white/90 backdrop-blur">
-    <div class="mx-auto flex h-20 max-w-6xl items-center justify-between px-4 sm:px-6">
+    <div class=w"mx-auto flex h-20 max-w-6xl items-center justify-between px-4 sm:px-6">
         <a href={resolvePath("/", Astro.currentLocale)} class="flex shrink-0 items-center" aria-label="HITA e.V. – Startseite">
             <img
                 src="/images/hita-logo-modern.svg"
@@ -45,7 +52,7 @@ const navLabel = translate('mainNavigation', Astro.currentLocale)
                 </ul>
             </nav>
 
-            <LanguageSwitcher />
+            <LanguageSwitcher alternates={alternates} />
 
             <button
                 type="button"
