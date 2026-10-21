@@ -1,12 +1,25 @@
+## Repository structure
+
+This is an npm workspaces monorepo. Install dependencies once from the repo root with `npm install`.
+
+- `apps/web` (`@hita/web`): the Astro website
+- `apps/studio` (`@hita/studio`): the Sanity Studio (CMS)
+
+Run workspace commands from the root, e.g. `npm run dev`, `npm run dev:studio`, `npm run build`, or target a
+workspace directly with `npm run <script> --workspace=@hita/web`. Add dependencies to the workspace that uses them
+(`npm install <pkg> --workspace=@hita/studio`), not to the root.
+
 ## Development
 
-When starting the dev server, use background mode:
+When starting the Astro dev server, use background mode from `apps/web`:
 
 ```
-astro dev --background
+cd apps/web && npx astro dev --background
 ```
 
 Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
+
+Start the Sanity Studio with `npm run dev:studio`.
 
 ## Documentation
 

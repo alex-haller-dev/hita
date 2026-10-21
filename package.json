@@ -1,20 +1,20 @@
 {
   "name": "hita",
+  "private": true,
   "type": "module",
-  "version": "0.0.1",
   "engines": {
     "node": ">=22.12.0"
   },
+  "workspaces": [
+    "apps/*"
+  ],
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "@tailwindcss/vite": "^4.3.3",
-    "astro": "^7.3.5",
-    "tailwindcss": "^4.3.3"
+    "dev": "npm run dev --workspace=@hita/web",
+    "dev:studio": "npm run dev --workspace=@hita/studio",
+    "build": "npm run build --workspaces",
+    "build:web": "npm run build --workspace=@hita/web",
+    "build:studio": "npm run build --workspace=@hita/studio",
+    "deploy:studio": "npm run deploy --workspace=@hita/studio"
   },
   "allowScripts": {
     "esbuild": true
