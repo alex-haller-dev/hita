@@ -14,7 +14,8 @@
     "build": "npm run build --workspaces",
     "build:web": "npm run build --workspace=@hita/web",
     "build:studio": "npm run build --workspace=@hita/studio",
-    "deploy:studio": "npm run deploy --workspace=@hita/studio"
+    "deploy:studio": "npm run deploy --workspace=@hita/studio",
+    "migration": "npm run migration --workspace=@hita/migration"
   },
   "allowScripts": {
     "esbuild": true
