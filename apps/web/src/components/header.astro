@@ -3,13 +3,13 @@ import LanguageSwitcher from "./language-switcher.astro";
 import Icon from "./icon.astro";
 import {translate} from "../translations/translations.ts";
 import {resolvePath} from "../utils/path.ts";
-import type { Alternates } from "./language-switcher.astro";
+import type { LanguagePathOverrides } from "./language-switcher.astro";
 
 interface Props {
-    alternates?: Alternates
+    languagePathOverrides?: LanguagePathOverrides
 }
 
-const { alternates } = Astro.props
+const { languagePathOverrides } = Astro.props
 
 const navItems = [
     { label: translate('aboutUs', Astro.currentLocale), href: resolvePath('/about-us', Astro.currentLocale) },
@@ -52,7 +52,7 @@ const navLabel = translate('mainNavigation', Astro.currentLocale)
                 </ul>
             </nav>
 
-            <LanguageSwitcher alternates={alternates} />
+            <LanguageSwitcher languagePathOverrides={languagePathOverrides} />
 
             <button
                 type="button"

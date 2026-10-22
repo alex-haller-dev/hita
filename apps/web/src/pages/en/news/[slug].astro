@@ -18,12 +18,12 @@ const { post } = Astro.props
 
 // Link the language switcher to the translated post, or to the news overview if there is none
 const translation = post.translations?.find((t) => t?.language === 'de')
-const alternates = {
+const languagePathOverrides = {
     de: resolvePath(translation ? `/news/${translation.slug}` : '/news', 'de'),
 }
 ---
 
-<LayoutDefault alternates={alternates}>
+<LayoutDefault languagePathOverrides={languagePathOverrides}>
     <PageHeader slot="hero" title={post.title} />
     <NewsArticle post={post} />
 </LayoutDefault>
