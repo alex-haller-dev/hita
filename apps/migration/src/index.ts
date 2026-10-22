@@ -4,7 +4,9 @@ import {migrateProjects} from './projects'
 console.log('Starting migration...')
 console.log('Migrating news...')
 
-await migrateNews()
+const newsMigrated = await migrateNews()
+
+console.log(`Successfully migrated ${newsMigrated.length} news`)
 
 console.log('Migrating projects...')
 
