@@ -15,9 +15,20 @@
     "build:web": "npm run build --workspace=@hita/web",
     "build:studio": "npm run build --workspace=@hita/studio",
     "deploy:studio": "npm run deploy --workspace=@hita/studio",
-    "migration": "npm run migration --workspace=@hita/migration"
+    "migration": "npm run migration --workspace=@hita/migration",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "allowScripts": {
     "esbuild": true
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@stylistic/eslint-plugin": "^5.10.0",
+    "eslint": "^10.13.0",
+    "eslint-plugin-astro": "^3.2.1",
+    "globals": "^17.13.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.72.0"
   }
 }
