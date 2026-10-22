@@ -1,15 +1,15 @@
 ---
-import { translate } from '../translations/translations';
-import Card from './card.astro';
-import Icon from './icon.astro';
+import { translate } from '../translations/translations'
+import Card from './card.astro'
+import Icon from './icon.astro'
 
-const locale = Astro.currentLocale ?? 'de';
-const t = (key: Parameters<typeof translate>[0]) => translate(key, locale);
+const locale = Astro.currentLocale ?? 'de'
+const t = (key: Parameters<typeof translate>[0]) => translate(key, locale)
 
-const iban = 'DE86 6907 0024 0050 6006 00';
+const iban = 'DE86 6907 0024 0050 6006 00'
 // On narrow cards the IBAN wraps between its two halves instead of leaving the last digits on their own line
-const ibanGroups = iban.split(' ');
-const ibanLines = [ibanGroups.slice(0, 3).join(' '), ibanGroups.slice(3).join(' ')];
+const ibanGroups = iban.split(' ')
+const ibanLines = [ibanGroups.slice(0, 3).join(' '), ibanGroups.slice(3).join(' ')]
 const bic = 'DEUTDEDB690';
 ---
 

@@ -1,14 +1,14 @@
 ---
-import { getCollection } from 'astro:content';
-import { translate } from '../translations/translations';
-import { resolvePath } from '../utils/path';
-import Icon from './icon.astro';
+import { getCollection } from 'astro:content'
+import { translate } from '../translations/translations'
+import { resolvePath } from '../utils/path'
+import Icon from './icon.astro'
 
-const locale = Astro.currentLocale ?? 'de';
-const t = (key: Parameters<typeof translate>[0]) => translate(key, locale);
+const locale = Astro.currentLocale ?? 'de'
+const t = (key: Parameters<typeof translate>[0]) => translate(key, locale)
 
 const reports = (await getCollection('annualReports', (entry) => entry.id.startsWith(`${locale}/`)))
-    .sort((a, b) => b.data.year - a.data.year);
+    .sort((a, b) => b.data.year - a.data.year)
 
 const linkClass =
     'inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand';

@@ -7,22 +7,22 @@ interface Props {
 }
 
 const { languagePathOverrides } = Astro.props
-const currentPath = Astro.url.pathname;
-const current = currentPath.startsWith('/en') ? 'en' : 'de';
+const currentPath = Astro.url.pathname
+const current = currentPath.startsWith('/en') ? 'en' : 'de'
 
 const getHref = (targetLang: 'de' | 'en') => {
-    if (languagePathOverrides?.[targetLang]) return languagePathOverrides?.[targetLang];
+    if (languagePathOverrides?.[targetLang]) return languagePathOverrides?.[targetLang]
     if (targetLang === 'en') {
-        if (current === 'en') return currentPath;
+        if (current === 'en') return currentPath
         // Add /en prefix; trailing slash on root handled automatically
-        return `/en${currentPath}`;
+        return `/en${currentPath}`
     } else {
-        if (current === 'de') return currentPath;
+        if (current === 'de') return currentPath
         // Remove /en prefix
-        const stripped = currentPath.replace(/^\/en/, '');
-        return stripped || '/';
+        const stripped = currentPath.replace(/^\/en/, '')
+        return stripped || '/'
     }
-};
+}
 
 const languages = [
     { code: 'de', label: 'DE', name: 'Deutsch', href: getHref('de') },
@@ -36,7 +36,7 @@ const languages = [
     class="inline-flex items-center rounded-full border border-gray-200 bg-gray-50 p-0.5 text-xs font-semibold tracking-wide"
 >
     {languages.map((lang) => {
-        const active = lang.code === current;
+        const active = lang.code === current
         return (
             <a
                 href={lang.href}
@@ -53,6 +53,6 @@ const languages = [
             >
                 {lang.label}
             </a>
-        );
+        )
     })}
 </div>

@@ -1,8 +1,8 @@
 ---
-import { render, type CollectionEntry } from 'astro:content';
-import { translate } from '../translations/translations';
-import { resolvePath } from '../utils/path';
-import Icon from './icon.astro';
+import { render, type CollectionEntry } from 'astro:content'
+import { translate } from '../translations/translations'
+import { resolvePath } from '../utils/path'
+import Icon from './icon.astro'
 
 interface Props {
     report: CollectionEntry<'annualReports'>
@@ -11,8 +11,8 @@ interface Props {
 const { report } = Astro.props
 const { Content } = await render(report)
 
-const locale = Astro.currentLocale ?? 'de';
-const t = (key: Parameters<typeof translate>[0]) => translate(key, locale);
+const locale = Astro.currentLocale ?? 'de'
+const t = (key: Parameters<typeof translate>[0]) => translate(key, locale)
 
 // Styles for the rendered markdown, which we can't put classes on directly
 const proseClass = [

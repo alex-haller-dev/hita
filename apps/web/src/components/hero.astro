@@ -1,18 +1,18 @@
 ---
-import { Image } from 'astro:assets';
-import { translate } from '../translations/translations';
-import heroImage from '../assets/images/hero-pc-lab-handover.jpg';
-import {resolvePath} from '../utils/path.ts';
-import Icon from './icon.astro';
+import { Image } from 'astro:assets'
+import { translate } from '../translations/translations'
+import heroImage from '../assets/images/hero-pc-lab-handover.jpg'
+import {resolvePath} from '../utils/path.ts'
+import Icon from './icon.astro'
 
-const locale = Astro.currentLocale ?? 'de';
-const t = (key: Parameters<typeof translate>[0]) => translate(key, locale);
+const locale = Astro.currentLocale ?? 'de'
+const t = (key: Parameters<typeof translate>[0]) => translate(key, locale)
 
 const stats = [
     { value: '40+', label: t('heroStatLabs') },
     { value: '500+', label: t('heroStatComputers') },
     { value: new Intl.NumberFormat(locale, { style: 'percent' }).format(1), label: t('heroStatVolunteers') },
-];
+]
 
 const buttonClass =
     'inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand sm:text-base';

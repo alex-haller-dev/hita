@@ -1,9 +1,9 @@
 ---
-import LanguageSwitcher from './language-switcher.astro';
-import Icon from './icon.astro';
-import {translate} from '../translations/translations.ts';
-import {resolvePath} from '../utils/path.ts';
-import type { LanguagePathOverrides } from './language-switcher.astro';
+import LanguageSwitcher from './language-switcher.astro'
+import Icon from './icon.astro'
+import {translate} from '../translations/translations.ts'
+import {resolvePath} from '../utils/path.ts'
+import type { LanguagePathOverrides } from './language-switcher.astro'
 
 interface Props {
     languagePathOverrides?: LanguagePathOverrides
@@ -18,7 +18,7 @@ const navItems = [
     { label: translate('news', Astro.currentLocale), href: resolvePath('/news', Astro.currentLocale) },
     { label: translate('partner', Astro.currentLocale), href: resolvePath('/partner', Astro.currentLocale) },
     { label: translate('annualReports', Astro.currentLocale), href: resolvePath('/annual-reports', Astro.currentLocale) },
-];
+]
 
 const navLabel = translate('mainNavigation', Astro.currentLocale)
 ---

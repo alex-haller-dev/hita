@@ -1,34 +1,34 @@
 ---
-import { translate } from '../translations/translations';
-import Activities from './activities.astro';
-import Icon from './icon.astro';
-import { resolvePath } from '../utils/path';
-import { Image } from 'astro:assets';
-import { TRANSPARENCY } from '../constants/transparency.ts';
-import transparencyLogo from '../assets/images/transparente-zivilgesellschaft.png';
-import thomasErkert from '../assets/images/board/thomas-erkert.jpg';
-import hildegardMackert from '../assets/images/board/hildegard-mackert.jpg';
-import danielGerlach from '../assets/images/board/daniel-gerlach.jpg';
+import { translate } from '../translations/translations'
+import Activities from './activities.astro'
+import Icon from './icon.astro'
+import { resolvePath } from '../utils/path'
+import { Image } from 'astro:assets'
+import { TRANSPARENCY } from '../constants/transparency.ts'
+import transparencyLogo from '../assets/images/transparente-zivilgesellschaft.png'
+import thomasErkert from '../assets/images/board/thomas-erkert.jpg'
+import hildegardMackert from '../assets/images/board/hildegard-mackert.jpg'
+import danielGerlach from '../assets/images/board/daniel-gerlach.jpg'
 
-const locale = Astro.currentLocale ?? 'de';
-const t = (key: Parameters<typeof translate>[0]) => translate(key, locale);
+const locale = Astro.currentLocale ?? 'de'
+const t = (key: Parameters<typeof translate>[0]) => translate(key, locale)
 
 const stats = [
     { value: '40+', label: t('heroStatLabs') },
     { value: '500+', label: t('heroStatComputers') },
     { value: '100%', label: t('heroStatVolunteers') },
-];
+]
 
-const transparency = locale === 'en' ? TRANSPARENCY.en : TRANSPARENCY.de;
+const transparency = locale === 'en' ? TRANSPARENCY.en : TRANSPARENCY.de
 
 const board = [
     { name: 'Thomas Erkert', role: t('boardChair'), email: 'thomas.erkert@hita-ev.org', photo: thomasErkert },
     { name: 'Hildegard Mackert', role: t('boardMember'), email: 'hildegard.mackert@hita-ev.org', photo: hildegardMackert },
     { name: 'Daniel Gerlach', role: t('boardMember'), email: 'daniel.gerlach@hita-ev.org', photo: danielGerlach },
-];
+]
 
 const secondaryButtonClass =
-    'inline-flex items-center gap-2 rounded-full border border-gray-300 bg-white px-5 py-2.5 text-sm font-semibold text-gray-800 transition-colors hover:border-brand hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand';
+    'inline-flex items-center gap-2 rounded-full border border-gray-300 bg-white px-5 py-2.5 text-sm font-semibold text-gray-800 transition-colors hover:border-brand hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand'
 const linkClass =
     'inline-flex items-center gap-1.5 rounded-sm text-sm font-semibold text-brand hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand';
 ---

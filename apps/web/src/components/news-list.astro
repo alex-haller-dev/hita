@@ -1,16 +1,16 @@
 ---
-import { translate } from '../translations/translations';
-import { resolvePath } from '../utils/path';
-import { formatNewsDate, getNewsSummaries, type NewsCategory } from '../utils/news';
-import { urlFor } from '../utils/sanity';
-import Icon from './icon.astro';
-import NewsCategories from './news-categories.astro';
-import NewsFilters from './news-filters.astro';
+import { translate } from '../translations/translations'
+import { resolvePath } from '../utils/path'
+import { formatNewsDate, getNewsSummaries, type NewsCategory } from '../utils/news'
+import { urlFor } from '../utils/sanity'
+import Icon from './icon.astro'
+import NewsCategories from './news-categories.astro'
+import NewsFilters from './news-filters.astro'
 
-const locale = Astro.currentLocale === 'en' ? 'en' : 'de';
-const t = (key: Parameters<typeof translate>[0]) => translate(key, locale);
+const locale = Astro.currentLocale === 'en' ? 'en' : 'de'
+const t = (key: Parameters<typeof translate>[0]) => translate(key, locale)
 
-const posts = await getNewsSummaries(locale);
+const posts = await getNewsSummaries(locale)
 
 const postCategories = (categories?: NewsCategory[]) => (categories ?? []).filter(Boolean)
 

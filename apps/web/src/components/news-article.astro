@@ -1,12 +1,12 @@
 ---
-import { PortableText } from 'astro-portabletext';
-import { translate } from '../translations/translations';
-import { resolvePath } from '../utils/path';
-import { formatNewsDate, type NewsPost } from '../utils/news';
-import { urlFor } from '../utils/sanity';
-import Icon from './icon.astro';
-import NewsImage from './news-image.astro';
-import NewsCategories from './news-categories.astro';
+import { PortableText } from 'astro-portabletext'
+import { translate } from '../translations/translations'
+import { resolvePath } from '../utils/path'
+import { formatNewsDate, type NewsPost } from '../utils/news'
+import { urlFor } from '../utils/sanity'
+import Icon from './icon.astro'
+import NewsImage from './news-image.astro'
+import NewsCategories from './news-categories.astro'
 
 interface Props {
     post: NewsPost
@@ -14,8 +14,8 @@ interface Props {
 
 const { post } = Astro.props
 
-const locale = Astro.currentLocale ?? 'de';
-const t = (key: Parameters<typeof translate>[0]) => translate(key, locale);
+const locale = Astro.currentLocale ?? 'de'
+const t = (key: Parameters<typeof translate>[0]) => translate(key, locale)
 
 // Styles for the rendered Portable Text, which we can't put classes on directly
 const proseClass = [

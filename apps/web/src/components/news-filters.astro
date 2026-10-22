@@ -1,7 +1,7 @@
 ---
-import { translate } from '../translations/translations';
-import type { NewsSummary } from '../utils/news';
-import Icon from './icon.astro';
+import { translate } from '../translations/translations'
+import type { NewsSummary } from '../utils/news'
+import Icon from './icon.astro'
 
 // Search and category filter for the news list. The filtering itself happens in the news-list script.
 interface Props {
@@ -10,8 +10,8 @@ interface Props {
 
 const { posts } = Astro.props
 
-const locale = Astro.currentLocale ?? 'de';
-const t = (key: Parameters<typeof translate>[0]) => translate(key, locale);
+const locale = Astro.currentLocale ?? 'de'
+const t = (key: Parameters<typeof translate>[0]) => translate(key, locale)
 
 // Categories that are used by at least one post, with their post count
 const categoryCounts = new Map<string, { name: string; count: number }>()

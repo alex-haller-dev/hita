@@ -1,18 +1,18 @@
 ---
-import { Image } from 'astro:assets';
-import { translate } from '../translations/translations';
-import { resolvePath } from '../utils/path';
-import Icon from './icon.astro';
-import ministryOfHealthGhana from '../assets/images/partners/ministry-of-health-ghana.png';
-import ghanaHealthService from '../assets/images/partners/ghana-health-service.png';
-import germanCooperation from '../assets/images/partners/german-cooperation.jpg';
-import schmitzStiftungen from '../assets/images/partners/schmitz-stiftungen.jpg';
-import uhas from '../assets/images/partners/uhas.png';
-import catholicUniversityGhana from '../assets/images/partners/catholic-university-ghana.png';
-import innoSpace from '../assets/images/partners/inno-space.png';
+import { Image } from 'astro:assets'
+import { translate } from '../translations/translations'
+import { resolvePath } from '../utils/path'
+import Icon from './icon.astro'
+import ministryOfHealthGhana from '../assets/images/partners/ministry-of-health-ghana.png'
+import ghanaHealthService from '../assets/images/partners/ghana-health-service.png'
+import germanCooperation from '../assets/images/partners/german-cooperation.jpg'
+import schmitzStiftungen from '../assets/images/partners/schmitz-stiftungen.jpg'
+import uhas from '../assets/images/partners/uhas.png'
+import catholicUniversityGhana from '../assets/images/partners/catholic-university-ghana.png'
+import innoSpace from '../assets/images/partners/inno-space.png'
 
-const locale = Astro.currentLocale ?? 'de';
-const t = (key: Parameters<typeof translate>[0]) => translate(key, locale);
+const locale = Astro.currentLocale ?? 'de'
+const t = (key: Parameters<typeof translate>[0]) => translate(key, locale)
 
 // The partners highlighted under "Unsere Partner" on the original website
 const partners = [

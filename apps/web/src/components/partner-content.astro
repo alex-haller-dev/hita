@@ -1,10 +1,10 @@
 ---
-import { translate } from '../translations/translations';
-import Card from './card.astro';
-import type { IconName } from '../constants/icons.ts';
+import { translate } from '../translations/translations'
+import Card from './card.astro'
+import type { IconName } from '../constants/icons.ts'
 
-const locale = Astro.currentLocale ?? 'de';
-const t = (key: Parameters<typeof translate>[0]) => translate(key, locale);
+const locale = Astro.currentLocale ?? 'de'
+const t = (key: Parameters<typeof translate>[0]) => translate(key, locale)
 
 // TODO we need to double-check if all partners are listed here. We might be missing government instituations
 const partnerGroups: { heading: string; icon: IconName; partners: string[] }[] = [
