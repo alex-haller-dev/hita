@@ -1,11 +1,13 @@
 {
   "name": "@hita/migration",
+  "private": true,
+  "type": "module",
   "version": "1.0.0",
   "main": "src/index.ts",
   "scripts": {
-    "migration": "ts-node src/index.ts"
+    "migration": "tsx src/index.ts"
   },
-  "dependencies": {
-    "ts-node": "^10.9.2"
+  "devDependencies": {
+    "tsx": "^4.23.15"
   }
 }
