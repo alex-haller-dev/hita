@@ -10,12 +10,12 @@ const { question, answer, open = false } = Astro.props
 const id = `faq-${crypto.randomUUID()}`
 ---
 
-<div data-faq data-open={open ? "" : undefined} class="group border-b border-gray-200">
+<div data-faq data-open={open ? '' : undefined} class="group border-b border-gray-200">
     <h3>
         <button
             type="button"
             id={`${id}-question`}
-            aria-expanded={open ? "true" : "false"}
+            aria-expanded={open ? 'true' : 'false'}
             aria-controls={`${id}-answer`}
             class="flex w-full cursor-pointer items-center justify-between gap-4 rounded-md py-5 text-left text-base font-semibold text-gray-800 transition-colors hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand sm:text-lg"
         >
@@ -44,15 +44,15 @@ const id = `faq-${crypto.randomUUID()}`
 </div>
 
 <script>
-    document.querySelectorAll<HTMLElement>("[data-faq]").forEach((item) => {
-        const button = item.querySelector("button")
-        const answer = item.querySelector<HTMLElement>("[role=region]")
+    document.querySelectorAll<HTMLElement>('[data-faq]').forEach((item) => {
+        const button = item.querySelector('button')
+        const answer = item.querySelector<HTMLElement>('[role=region]')
         if (!button || !answer) return
 
-        button.addEventListener("click", () => {
-            const open = !item.hasAttribute("data-open")
-            item.toggleAttribute("data-open", open)
-            button.setAttribute("aria-expanded", String(open))
+        button.addEventListener('click', () => {
+            const open = !item.hasAttribute('data-open')
+            item.toggleAttribute('data-open', open)
+            button.setAttribute('aria-expanded', String(open))
             answer.inert = !open
         })
     })

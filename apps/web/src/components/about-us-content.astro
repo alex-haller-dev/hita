@@ -1,14 +1,14 @@
 ---
 import { translate } from '../translations/translations';
-import Activities from "./activities.astro";
-import Icon from "./icon.astro";
-import { resolvePath } from "../utils/path";
-import { Image } from "astro:assets";
-import { TRANSPARENCY } from "../constants/transparency.ts";
-import transparencyLogo from "../assets/images/transparente-zivilgesellschaft.png";
-import thomasErkert from "../assets/images/board/thomas-erkert.jpg";
-import hildegardMackert from "../assets/images/board/hildegard-mackert.jpg";
-import danielGerlach from "../assets/images/board/daniel-gerlach.jpg";
+import Activities from './activities.astro';
+import Icon from './icon.astro';
+import { resolvePath } from '../utils/path';
+import { Image } from 'astro:assets';
+import { TRANSPARENCY } from '../constants/transparency.ts';
+import transparencyLogo from '../assets/images/transparente-zivilgesellschaft.png';
+import thomasErkert from '../assets/images/board/thomas-erkert.jpg';
+import hildegardMackert from '../assets/images/board/hildegard-mackert.jpg';
+import danielGerlach from '../assets/images/board/daniel-gerlach.jpg';
 
 const locale = Astro.currentLocale ?? 'de';
 const t = (key: Parameters<typeof translate>[0]) => translate(key, locale);

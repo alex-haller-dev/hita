@@ -1,51 +1,51 @@
 ---
-import { translate } from "../translations/translations";
-import { resolvePath } from "../utils/path.ts";
-import Icon from "./icon.astro";
-import type { IconName } from "../constants/icons.ts";
+import { translate } from '../translations/translations';
+import { resolvePath } from '../utils/path.ts';
+import Icon from './icon.astro';
+import type { IconName } from '../constants/icons.ts';
 
-const locale = Astro.currentLocale ?? "de";
+const locale = Astro.currentLocale ?? 'de';
 const t = (key: Parameters<typeof translate>[0]) => translate(key, locale);
 
 const socials: { name: string; href: string; icon: IconName }[] = [
     {
-        name: "Facebook",
-        href: "https://www.facebook.com/HITA-eV-Healthcare-Information-Technologies-for-Africa-eV-448468271870135/",
-        icon: "facebook",
+        name: 'Facebook',
+        href: 'https://www.facebook.com/HITA-eV-Healthcare-Information-Technologies-for-Africa-eV-448468271870135/',
+        icon: 'facebook',
     },
     {
-        name: "Instagram",
-        href: "https://www.instagram.com/hita_ev/",
-        icon: "instagram",
+        name: 'Instagram',
+        href: 'https://www.instagram.com/hita_ev/',
+        icon: 'instagram',
     },
     {
-        name: "LinkedIn",
-        href: "https://www.linkedin.com/in/hita-ev-b10a16145/",
-        icon: "linkedin",
+        name: 'LinkedIn',
+        href: 'https://www.linkedin.com/in/hita-ev-b10a16145/',
+        icon: 'linkedin',
     },
     {
-        name: "X (Twitter)",
-        href: "https://twitter.com/HITA_eV",
-        icon: "x",
+        name: 'X (Twitter)',
+        href: 'https://twitter.com/HITA_eV',
+        icon: 'x',
     },
     {
-        name: "YouTube",
-        href: "https://www.youtube.com/@HITAeV",
-        icon: "youtube",
+        name: 'YouTube',
+        href: 'https://www.youtube.com/@HITAeV',
+        icon: 'youtube',
     },
 ];
 
 const legalLinks = [
-    { label: t("footerImprint"), href: resolvePath("/legal-notice", Astro.currentLocale) },
-    { label: t("footerPrivacy"), href: resolvePath("/privacy-policy", Astro.currentLocale) },
+    { label: t('footerImprint'), href: resolvePath('/legal-notice', Astro.currentLocale) },
+    { label: t('footerPrivacy'), href: resolvePath('/privacy-policy', Astro.currentLocale) },
 ];
 
 const year = new Date().getFullYear();
 
-const headingClass = "mb-4 text-xs font-bold tracking-widest text-white uppercase";
-const labelClass = "text-xs text-gray-400";
+const headingClass = 'mb-4 text-xs font-bold tracking-widest text-white uppercase';
+const labelClass = 'text-xs text-gray-400';
 const linkClass =
-    "rounded-sm transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand";
+    'rounded-sm transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand';
 ---
 
 <footer class="border-t-4 border-brand bg-gray-900 text-sm text-gray-300">
@@ -59,9 +59,9 @@ const linkClass =
                 class="h-20 w-auto"
             />
             <p class="mt-4 leading-relaxed text-gray-400">
-                {t("footerTagline")}
+                {t('footerTagline')}
             </p>
-            <ul class="mt-6 flex flex-wrap gap-2" aria-label={t("footerSocialMedia")}>
+            <ul class="mt-6 flex flex-wrap gap-2" aria-label={t('footerSocialMedia')}>
                 {socials.map((social) => (
                     <li>
                         <a
@@ -80,7 +80,7 @@ const linkClass =
         </div>
 
         <div>
-            <h2 class={headingClass}>{t("footerOffice")}</h2>
+            <h2 class={headingClass}>{t('footerOffice')}</h2>
             <address class="leading-relaxed not-italic">
                 Healthcare IT for Africa e.V. <span class="whitespace-nowrap">(HITA e.V.)</span><br />
                 c/o Marion Fellmann<br />
@@ -90,14 +90,14 @@ const linkClass =
         </div>
 
         <div>
-            <h2 class={headingClass}>{t("footerContact")}</h2>
+            <h2 class={headingClass}>{t('footerContact')}</h2>
             <dl class="space-y-3">
                 <div>
-                    <dt class={labelClass}>{t("footerPhone")}</dt>
+                    <dt class={labelClass}>{t('footerPhone')}</dt>
                     <dd><a href="tel:+4915678952247" class={linkClass}>+49 15678 952247</a></dd>
                 </div>
                 <div>
-                    <dt class={labelClass}>{t("footerEmail")}</dt>
+                    <dt class={labelClass}>{t('footerEmail')}</dt>
                     <dd>
                         <a href="mailto:geschaeftsstelle@hita-ev.org" class={`${linkClass} break-all`}>
                             geschaeftsstelle@hita-ev.org
@@ -108,14 +108,14 @@ const linkClass =
         </div>
 
         <div>
-            <h2 class={headingClass}>{t("footerDonationAccount")}</h2>
+            <h2 class={headingClass}>{t('footerDonationAccount')}</h2>
             <dl class="space-y-3">
                 <div>
-                    <dt class={labelClass}>{t("footerAccountHolder")}</dt>
+                    <dt class={labelClass}>{t('footerAccountHolder')}</dt>
                     <dd>HITA e.V.</dd>
                 </div>
                 <div>
-                    <dt class={labelClass}>{t("footerBank")}</dt>
+                    <dt class={labelClass}>{t('footerBank')}</dt>
                     <dd>Deutsche Bank</dd>
                 </div>
                 <div>
@@ -133,10 +133,10 @@ const linkClass =
     <div class="border-t border-white/10">
         <div class="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-6 text-xs text-gray-400 sm:px-6 md:flex-row md:items-start md:justify-between">
             <div class="space-y-1 md:max-w-3xl">
-                <p>© {year} Health Care IT for Africa e.V. (HITA e.V.) · {t("footerRightsReserved")}</p>
-                <p class="leading-relaxed">{t("footerRegistration")}</p>
+                <p>© {year} Health Care IT for Africa e.V. (HITA e.V.) · {t('footerRightsReserved')}</p>
+                <p class="leading-relaxed">{t('footerRegistration')}</p>
             </div>
-            <nav aria-label={t("footerLegal")}>
+            <nav aria-label={t('footerLegal')}>
                 <ul class="flex gap-4">
                     {legalLinks.map((link) => (
                         <li>

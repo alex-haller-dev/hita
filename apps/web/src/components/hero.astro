@@ -1,21 +1,21 @@
 ---
-import { Image } from "astro:assets";
-import { translate } from "../translations/translations";
-import heroImage from "../assets/images/hero-pc-lab-handover.jpg";
-import {resolvePath} from "../utils/path.ts";
-import Icon from "./icon.astro";
+import { Image } from 'astro:assets';
+import { translate } from '../translations/translations';
+import heroImage from '../assets/images/hero-pc-lab-handover.jpg';
+import {resolvePath} from '../utils/path.ts';
+import Icon from './icon.astro';
 
-const locale = Astro.currentLocale ?? "de";
+const locale = Astro.currentLocale ?? 'de';
 const t = (key: Parameters<typeof translate>[0]) => translate(key, locale);
 
 const stats = [
-    { value: "40+", label: t("heroStatLabs") },
-    { value: "500+", label: t("heroStatComputers") },
-    { value: new Intl.NumberFormat(locale, { style: "percent" }).format(1), label: t("heroStatVolunteers") },
+    { value: '40+', label: t('heroStatLabs') },
+    { value: '500+', label: t('heroStatComputers') },
+    { value: new Intl.NumberFormat(locale, { style: 'percent' }).format(1), label: t('heroStatVolunteers') },
 ];
 
 const buttonClass =
-    "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand sm:text-base";
+    'inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand sm:text-base';
 ---
 
 <section class="relative overflow-hidden bg-linear-to-b from-gray-50 to-white">
@@ -37,25 +37,25 @@ const buttonClass =
         <div>
             <p class="inline-flex items-center gap-2 rounded-full bg-brand/10 px-3 py-1 text-xs font-semibold tracking-wide text-brand uppercase">
                 <span class="size-1.5 rounded-full bg-brand" aria-hidden="true"></span>
-                {t("heroEyebrow")}
+                {t('heroEyebrow')}
             </p>
 
             <h1 class="mt-5 text-3xl leading-tight font-bold tracking-tight text-balance text-gray-900 sm:text-5xl lg:text-[2.75rem] xl:text-[3.25rem]">
-                {t("heroTitle")}{" "}
-                <span class="text-brand">{t("heroTitleHighlight")}</span>
+                {t('heroTitle')}{' '}
+                <span class="text-brand">{t('heroTitleHighlight')}</span>
             </h1>
 
             <p class="mt-6 max-w-xl text-lg leading-relaxed text-gray-600">
-                {t("heroText")}
+                {t('heroText')}
             </p>
 
             <div class="mt-8 flex flex-wrap gap-3">
-                <a href={resolvePath("/support", Astro.currentLocale)} class={`${buttonClass} bg-brand text-white shadow-sm hover:bg-brand-dark`}>
-                    {t("heroDonate")}
+                <a href={resolvePath('/support', Astro.currentLocale)} class={`${buttonClass} bg-brand text-white shadow-sm hover:bg-brand-dark`}>
+                    {t('heroDonate')}
                     <Icon name="heart" class="size-4" />
                 </a>
-                <a href={resolvePath("/projects", Astro.currentLocale)} class={`${buttonClass} border border-gray-300 bg-white text-gray-800 hover:border-brand hover:text-brand`}>
-                    {t("heroProjects")}
+                <a href={resolvePath('/projects', Astro.currentLocale)} class={`${buttonClass} border border-gray-300 bg-white text-gray-800 hover:border-brand hover:text-brand`}>
+                    {t('heroProjects')}
                     <Icon name="arrowRight" class="size-4" />
                 </a>
             </div>
@@ -74,7 +74,7 @@ const buttonClass =
             <div class="absolute inset-0 translate-x-3 translate-y-3 rounded-3xl bg-brand/15 sm:translate-x-5 sm:translate-y-5" aria-hidden="true"></div>
             <Image
                 src={heroImage}
-                alt={t("heroImageAlt")}
+                alt={t('heroImageAlt')}
                 widths={[480, 800, 1200, 1600]}
                 sizes="(min-width: 1152px) 544px, (min-width: 1024px) 45vw, 100vw"
                 loading="eager"
@@ -87,8 +87,8 @@ const buttonClass =
                     <Icon name="laptop" class="size-5" />
                 </span>
                 <p class="text-sm leading-snug">
-                    <span class="block font-semibold text-gray-900">{t("heroImageCaptionTitle")}</span>
-                    <span class="text-gray-600">{t("heroImageCaptionText")}</span>
+                    <span class="block font-semibold text-gray-900">{t('heroImageCaptionTitle')}</span>
+                    <span class="text-gray-600">{t('heroImageCaptionText')}</span>
                 </p>
             </div>
         </div>

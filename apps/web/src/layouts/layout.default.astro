@@ -1,8 +1,8 @@
 ---
-import Header from "../components/header.astro";
-import Footer from "../components/footer.astro";
-import "../styles/global.css";
-import type { LanguagePathOverrides } from "../components/language-switcher.astro";
+import Header from '../components/header.astro';
+import Footer from '../components/footer.astro';
+import '../styles/global.css';
+import type { LanguagePathOverrides } from '../components/language-switcher.astro';
 
 interface Props {
     // Language switcher targets, for pages whose URL differs per language (e.g. news articles)
@@ -12,7 +12,7 @@ interface Props {
 const { languagePathOverrides } = Astro.props
 ---
 
-<html lang={Astro.currentLocale ?? "de"}>
+<html lang={Astro.currentLocale ?? 'de'}>
     <head>
         <meta charset="utf-8" />
         <link rel="icon" href="/favicon.ico" sizes="32x32" />

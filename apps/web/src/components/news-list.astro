@@ -94,30 +94,30 @@ const searchIndex = posts.map((post) => ({
 </div>
 
 <script>
-    import Fuse from "fuse.js"
+    import Fuse from 'fuse.js'
 
     type SearchEntry = { id: string; title: string; excerpt: string; categories: string[] }
 
-    const root = document.querySelector<HTMLElement>("[data-news-list]")
-    const form = root?.querySelector<HTMLFormElement>("[data-news-filters]")
-    const search = root?.querySelector<HTMLInputElement>("[data-news-search]")
-    const list = root?.querySelector<HTMLElement>("[data-news-items]")
-    const index = root?.querySelector<HTMLScriptElement>("[data-news-index]")
+    const root = document.querySelector<HTMLElement>('[data-news-list]')
+    const form = root?.querySelector<HTMLFormElement>('[data-news-filters]')
+    const search = root?.querySelector<HTMLInputElement>('[data-news-search]')
+    const list = root?.querySelector<HTMLElement>('[data-news-items]')
+    const index = root?.querySelector<HTMLScriptElement>('[data-news-index]')
 
     if (root && form && search && list && index) {
-        const category = root.querySelector<HTMLSelectElement>("[data-news-category]")
-        const noResults = root.querySelector<HTMLElement>("[data-news-no-results]")
+        const category = root.querySelector<HTMLSelectElement>('[data-news-category]')
+        const noResults = root.querySelector<HTMLElement>('[data-news-no-results]')
         const items = new Map(
-            [...list.querySelectorAll<HTMLElement>("[data-news-item]")].map((item) => [item.dataset.id ?? "", item]),
+            [...list.querySelectorAll<HTMLElement>('[data-news-item]')].map((item) => [item.dataset.id ?? '', item]),
         )
         // Server-rendered order is newest first, which we restore when the search is cleared
         const dateOrder = [...items.keys()]
 
-        const fuse = new Fuse<SearchEntry>(JSON.parse(index.textContent ?? "[]"), {
+        const fuse = new Fuse<SearchEntry>(JSON.parse(index.textContent ?? '[]'), {
             keys: [
-                { name: "title", weight: 3 },
-                { name: "excerpt", weight: 2 },
-                { name: "categories", weight: 1 },
+                { name: 'title', weight: 3 },
+                { name: 'excerpt', weight: 2 },
+                { name: 'categories', weight: 1 },
             ],
             threshold: 0.35,
             ignoreLocation: true,
@@ -127,12 +127,12 @@ const searchIndex = posts.map((post) => ({
 
         const update = () => {
             const query = search.value.trim()
-            const selectedCategory = category?.value ?? ""
+            const selectedCategory = category?.value ?? ''
 
             // With a search query, results are ordered by relevance instead of date
             const ids = query ? fuse.search(query).map((result) => result.item.id) : dateOrder
             const visible = ids.filter(
-                (id) => !selectedCategory || items.get(id)?.dataset.categories?.split(" ").includes(selectedCategory),
+                (id) => !selectedCategory || items.get(id)?.dataset.categories?.split(' ').includes(selectedCategory),
             )
 
             items.forEach((item) => (item.hidden = true))
@@ -146,21 +146,25 @@ const searchIndex = posts.map((post) => ({
 
             // Keep the filters in the URL so filtered results can be shared and survive a reload
             const url = new URL(window.location.href)
-            query ? url.searchParams.set("q", query) : url.searchParams.delete("q")
-            selectedCategory ? url.searchParams.set("category", selectedCategory) : url.searchParams.delete("category")
-            history.replaceState(null, "", url)
+            if (query) url.searchParams.set('q', query)
+            else url.searchParams.delete('q')
+
+            if (selectedCategory) url.searchParams.set('category', selectedCategory)
+            else url.searchParams.delete('category')
+
+            history.replaceState(null, '', url)
         }
 
         const params = new URLSearchParams(window.location.search)
-        search.value = params.get("q") ?? ""
-        if (category && [...category.options].some((option) => option.value === params.get("category"))) {
-            category.value = params.get("category") ?? ""
+        search.value = params.get('q') ?? ''
+        if (category && [...category.options].some((option) => option.value === params.get('category'))) {
+            category.value = params.get('category') ?? ''
         }
 
-        search.addEventListener("input", update)
-        category?.addEventListener("change", update)
-        form.addEventListener("submit", (event) => event.preventDefault())
-        root.querySelector("[data-news-reset]")?.addEventListener("click", () => {
+        search.addEventListener('input', update)
+        category?.addEventListener('change', update)
+        form.addEventListener('submit', (event) => event.preventDefault())
+        root.querySelector('[data-news-reset]')?.addEventListener('click', () => {
             form.reset()
             update()
             search.focus()
