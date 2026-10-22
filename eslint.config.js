@@ -28,6 +28,7 @@ export default defineConfig(
     rules: {
       '@stylistic/quotes': ['error', 'single', { avoidEscape: true }],
       '@stylistic/comma-dangle': ['error', 'always-multiline'],
+      '@stylistic/semi': ['error', 'never'],
     },
   },
 )
