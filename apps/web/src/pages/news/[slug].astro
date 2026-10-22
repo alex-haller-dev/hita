@@ -17,7 +17,7 @@ interface Props {
 const { post } = Astro.props
 
 // Link the language switcher to the translated post, or to the news overview if there is none
-const translation = post.translations?.find((t) => t?.language === 'en')
+const translation = (post.translations || []).find((t) => t?.language === 'en')
 const alternates = {
     en: resolvePath(translation ? `/news/${translation.slug}` : '/news', 'en'),
 }
